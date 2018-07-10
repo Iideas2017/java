@@ -4,17 +4,20 @@
 
 ## Java基础知识点总结
 
-* [String、StringBuilder、StringBuffer区别](java-ji-chu-zhi-shi-dian-zong-jie/stringstringbuilderstringbuffer-qu-bie.md)
-* [数据类型](java-ji-chu-zhi-shi-dian-zong-jie/untitled-1.md)
-* [Java 中“==”和equals（Object obj）](java-ji-chu-zhi-shi-dian-zong-jie/java-zhong-he-equalsobject-obj.md)
-* [集合相关](java-ji-chu-zhi-shi-dian-zong-jie/ji-he-xiang-guan/README.md)
+* [Java基础相关](java-ji-chu-zhi-shi-dian-zong-jie/java-ji-chu-xiang-guan/README.md)
+  * [String、StringBuilder、StringBuffer区别](java-ji-chu-zhi-shi-dian-zong-jie/java-ji-chu-xiang-guan/stringstringbuilderstringbuffer-qu-bie.md)
+  * [数据类型](java-ji-chu-zhi-shi-dian-zong-jie/java-ji-chu-xiang-guan/untitled-1.md)
+  * [Java 中“==”和equals（Object obj）](java-ji-chu-zhi-shi-dian-zong-jie/java-ji-chu-xiang-guan/java-zhong-he-equalsobject-obj.md)
+  * [Untitled](java-ji-chu-zhi-shi-dian-zong-jie/java-ji-chu-xiang-guan/untitled.md)
+* [Java集合相关](java-ji-chu-zhi-shi-dian-zong-jie/ji-he-xiang-guan/README.md)
+  * [Java集合框架](java-ji-chu-zhi-shi-dian-zong-jie/ji-he-xiang-guan/ji-he-kuang-jia.md)
   * [ArrayList、Vector、LinkedList 的区别](java-ji-chu-zhi-shi-dian-zong-jie/ji-he-xiang-guan/arraylistvectorlinkedlist-de-qu-bie.md)
-  * [集合框架](java-ji-chu-zhi-shi-dian-zong-jie/ji-he-xiang-guan/ji-he-kuang-jia/README.md)
-    * [Untitled](java-ji-chu-zhi-shi-dian-zong-jie/ji-he-xiang-guan/ji-he-kuang-jia/untitled.md)
+  * [HashMap](java-ji-chu-zhi-shi-dian-zong-jie/ji-he-xiang-guan/hashmap.md)
 
 ## Java 部分源码学习
 
 * [String源码学习](java-source-code/string-yuan-ma-xue-xi.md)
+* [HashMap源码学习](java-source-code/hashmap-yuan-ma-xue-xi.md)
 
 ## JVM相关
 
