@@ -39,3 +39,7 @@ System.out.println(str);
 
 　　**StringBuffer：适用多线程下在字符缓冲区进行大量操作的情况**
 
+## **4. 参考**
+
+\*\*\*\*[**https://blog.csdn.net/fairy\_huang/article/details/76070200**](https://blog.csdn.net/fairy_huang/article/details/76070200)\*\*\*\*
+
