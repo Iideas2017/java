@@ -32,5 +32,17 @@
 ## JVM
 
 * [JVM概述](jvm/jvm-gai-shu.md)
-* [1. 类加载器子系统](jvm/1.-lei-jia-zai-qi-zi-xi-tong.md)
+* [1. 类加载器子系统](jvm/1.-lei-jia-zai-qi-zi-xi-tong/README.md)
+  * [1.1类加载器与双亲委派模型](jvm/1.-lei-jia-zai-qi-zi-xi-tong/1.1-lei-jia-zai-qi-yu-shuang-qin-wei-pai-mo-xing.md)
+  * [1.2类加载机制的破坏](jvm/1.-lei-jia-zai-qi-zi-xi-tong/1.2-lei-jia-zai-ji-zhi-de-po-huai.md)
+  * [1.3 Tomcat类加载机制](jvm/1.-lei-jia-zai-qi-zi-xi-tong/untitled.md)
+  * [参考资料](jvm/1.-lei-jia-zai-qi-zi-xi-tong/can-kao-zi-liao.md)
+* [2. 运行时数据区](2.-yun-hang-shi-shu-ju-qu.md)
+* [3. 执行引擎](3.-zhi-hang-yin-qing/README.md)
+  * [3.1垃圾回收器](3.-zhi-hang-yin-qing/3.1-la-ji-hui-shou-qi/README.md)
+    * [3.1.1 java 对象存活分析](3.-zhi-hang-yin-qing/3.1-la-ji-hui-shou-qi/3.1.1-java-dui-xiang-cun-huo-fen-xi.md)
+    * [3.1.2 对象分配](3.-zhi-hang-yin-qing/3.1-la-ji-hui-shou-qi/3.1.2-dui-xiang-fen-pei.md)
+    * [3.1.3 三种基本的GC算法](3.-zhi-hang-yin-qing/3.1-la-ji-hui-shou-qi/3.1.3-san-zhong-ji-ben-de-gc-suan-fa.md)
+    * [3.1.4 JVM垃圾回收器](3.-zhi-hang-yin-qing/3.1-la-ji-hui-shou-qi/3.1.4-jvm-la-ji-hui-shou-qi.md)
+  * [参考资料](3.-zhi-hang-yin-qing/untitled.md)
 
