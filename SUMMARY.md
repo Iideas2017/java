@@ -26,8 +26,7 @@
 * [Java中的常量池](jvm-xiang-guan/java-zhong-de-chang-liang-chi/README.md)
   * [8种基本数据类型](jvm-xiang-guan/java-zhong-de-chang-liang-chi/8-zhong-ji-ben-shu-ju-lei-xing.md)
   * [String 类](jvm-xiang-guan/java-zhong-de-chang-liang-chi/string-lei.md)
-* [参考资料：](jvm-xiang-guan/can-kao-zi-liao.md)
-* [JVM概述](jvm-xiang-guan/jvm-gai-shu.md)
+* [参考资料](jvm-xiang-guan/can-kao-zi-liao.md)
 
 ## JVM
 
@@ -45,4 +44,8 @@
     * [3.1.3 三种基本的GC算法](3.-zhi-hang-yin-qing/3.1-la-ji-hui-shou-qi/3.1.3-san-zhong-ji-ben-de-gc-suan-fa.md)
     * [3.1.4 JVM垃圾回收器](3.-zhi-hang-yin-qing/3.1-la-ji-hui-shou-qi/3.1.4-jvm-la-ji-hui-shou-qi.md)
   * [参考资料](3.-zhi-hang-yin-qing/untitled.md)
+* [并发相关](bing-fa-xiang-guan/README.md)
+  * [1. 原子性、可见性、有序性](bing-fa-xiang-guan/1.-yuan-zi-xing-ke-jian-xing-you-xu-xing.md)
+  * [Untitled](bing-fa-xiang-guan/untitled.md)
+  * [volatile 变量](bing-fa-xiang-guan/volatile-bian-liang.md)
 

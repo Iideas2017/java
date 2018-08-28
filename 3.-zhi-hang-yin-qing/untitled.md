@@ -8,3 +8,9 @@
 
 {% embed data="{\"url\":\"https://www.cnblogs.com/chengxuyuanzhilu/p/7088316.html\",\"type\":\"link\",\"title\":\"JVM\(HotSpot\) 7种垃圾收集器的特点及使用场景 - guangboyuan.cn - 博客园\",\"description\":\"这里讨论的收集器基于JDK1.7Update 14之后的HotSpot虚拟机，这个虚拟机包含的所有收集器如下图3-5所示： 上图展示了7种作用于不同分代的收集器，如果两个收集器之间存在连线，就说明它们\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://blog.csdn.net/bright60/article/details/78930752\",\"type\":\"link\",\"title\":\"JAVA8中JVM的变化和优化 - CSDN博客\",\"description\":\"在JVM中，我们经常提到的就是堆（Head）了，堆确实很重要，其实，除了堆之外，还有几个重要的模块，看下图：           大多数情况下，我们并不需要关心JVM的底层，但是如果了解它的话，对于我们系统调优是非常有用的，在这里面了解JVM的GC原理，是非常重要的一块知识。  我们都知道对于一个大型网站，如果JVM频繁发生FULL GC，那么将会是致命的危险，不仅仅会造成网站响应迟\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"http://www.importnew.com/1551.html\",\"type\":\"link\",\"title\":\"JVM垃圾回收机制 - ImportNew\",\"description\":\"这篇文章会具体介绍Java堆空间和参数MaxPermSize的含义。\",\"icon\":{\"type\":\"icon\",\"url\":\"http://www.importnew.com/wp-content/themes/jobbolev4blog/mobileicon.png\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://blog.csdn.net/tjiyu/article/details/53983650\",\"type\":\"link\",\"title\":\"Java虚拟机垃圾回收\(三\) 7种垃圾收集器：主要特点 应用场景 设置参数 基本运行原理 - CSDN博客\",\"description\":\"下面先来了解HotSpot虚拟机中的7种垃圾收集器：Serial、ParNew、Parallel Scavenge、Serial Old、Parallel Old、CMS、G1，先介绍一些垃圾收集的相关概念，再介绍它们的主要特点、应用场景、以及一些设置参数和基本运行原理。\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
