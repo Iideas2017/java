@@ -46,6 +46,6 @@
   * [参考资料](3.-zhi-hang-yin-qing/untitled.md)
 * [并发相关](bing-fa-xiang-guan/README.md)
   * [1. 原子性、可见性、有序性](bing-fa-xiang-guan/1.-yuan-zi-xing-ke-jian-xing-you-xu-xing.md)
-  * [Untitled](bing-fa-xiang-guan/untitled.md)
-  * [volatile 变量](bing-fa-xiang-guan/volatile-bian-liang.md)
+  * [2. java内存模型以及happens-before规则](bing-fa-xiang-guan/untitled.md)
+  * [3. volatile 变量](bing-fa-xiang-guan/volatile-bian-liang.md)
 
