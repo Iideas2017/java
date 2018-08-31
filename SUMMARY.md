@@ -63,5 +63,7 @@
   * [AOP](untitled/aop.md)
   * [注解](untitled/zhu-jie.md)
   * [Spring 框架概述](untitled/spring-kuang-jia-gai-shu.md)
-* [IOC](ioc.md)
+* [IOC](ioc/README.md)
+  * [Untitled](ioc/untitled.md)
+  * [Untitled2](ioc/untitled2.md)
 
