@@ -8,7 +8,7 @@ MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是数�
 
 下图是MyISAM主键索引的原理图： 
 
-![MyISAM&#x4E3B;&#x952E;&#x7D22;&#x5F15;](../../.gitbook/assets/image%20%2867%29.png)
+![MyISAM&#x4E3B;&#x952E;&#x7D22;&#x5F15;](../../.gitbook/assets/image%20%2868%29.png)
 
  可以看出MyISAM的索引文件仅仅保存数据记录的地址。
 
@@ -38,7 +38,7 @@ MyISAM的索引方式也叫做“**非聚集**”的，之所以这么称呼是�
 
        InnoDB的所有辅助索引都引用主键作为data域。
 
-![&#x8F85;&#x52A9;&#x7D22;&#x5F15;](../../.gitbook/assets/image%20%2857%29.png)
+![&#x8F85;&#x52A9;&#x7D22;&#x5F15;](../../.gitbook/assets/image%20%2858%29.png)
 
   **InnoDB 表是基于聚簇索引建立的**。因此InnoDB 的索引能提供一种非常快速的主键查找性能。不过，它的**辅助索引**（Secondary Index， 也就是非主键索引）也会包含主键列，所以，如果主键定义的比较大，其他索引也将很大。如果想在表上定义 、很多索引，则争取尽量把主键定义得小一些。InnoDB 不会压缩索引。
 
