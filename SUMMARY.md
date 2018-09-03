@@ -68,6 +68,7 @@
   * [索引](ioc/untitled/README.md)
     * [索引的基础知识](ioc/untitled/suo-yin-de-ji-chu-zhi-shi.md)
     * [聚集和非聚集索引](ioc/untitled/ju-ji-he-fei-ju-ji-suo-yin.md)
+    * [InnoDB 与 MyISAM](ioc/untitled/innodb-yu-myisam.md)
     * [最左前缀匹配原则](ioc/untitled/zui-zuo.md)
   * [事务](ioc/shi-wu/README.md)
     * [概念](ioc/shi-wu/gai-nian.md)
