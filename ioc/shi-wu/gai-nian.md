@@ -1,6 +1,6 @@
 # ACID
 
-![&#x6982;&#x89C8;](../../.gitbook/assets/image%20%2889%29.png)
+![&#x6982;&#x89C8;](../../.gitbook/assets/image%20%2892%29.png)
 
 ## 1.  ACID
 
