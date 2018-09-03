@@ -2,9 +2,9 @@
 
 ## 1. concurrent包的结构层次
 
-![concurrent&#x76EE;&#x5F55;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%2861%29.png)
+![concurrent&#x76EE;&#x5F55;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%2863%29.png)
 
-![concurrent&#x5305;&#x5B9E;&#x73B0;&#x6574;&#x4F53;&#x793A;&#x610F;&#x56FE;](../../.gitbook/assets/image%20%2815%29.png)
+![concurrent&#x5305;&#x5B9E;&#x73B0;&#x6574;&#x4F53;&#x793A;&#x610F;&#x56FE;](../../.gitbook/assets/image%20%2817%29.png)
 
 ## 2. lock简介
 
