@@ -1,4 +1,4 @@
-# InnoDB 与 MyISAM
+# 2.3 InnoDB 与 MyISAM
 
 ## 1. MyISAM索引实现：
 
