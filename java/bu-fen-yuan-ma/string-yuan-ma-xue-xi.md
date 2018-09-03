@@ -29,7 +29,7 @@ public final class String
 
 ### 3. 构造函数：
 
-![String &#x6784;&#x9020;&#x51FD;&#x6570;](../.gitbook/assets/qq-jie-tu-20180709135707.png)
+![String &#x6784;&#x9020;&#x51FD;&#x6570;](../../.gitbook/assets/qq-jie-tu-20180709135707.png)
 
 ```java
 //不含参数的构造函数，一般没什么用，因为value是不可变量
