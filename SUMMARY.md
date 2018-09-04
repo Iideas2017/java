@@ -13,7 +13,8 @@
   * [部分源码](java/bu-fen-yuan-ma/README.md)
     * [String源码学习](java/bu-fen-yuan-ma/string-yuan-ma-xue-xi.md)
     * [HashMap源码学习](java/bu-fen-yuan-ma/hashmap-yuan-ma-xue-xi.md)
-    * [ThreadLocalMap](java/bu-fen-yuan-ma/threadlocalmap.md)
+    * [ThreadLocalMap （上）](java/bu-fen-yuan-ma/threadlocalmap.md)
+    * [ThreadLocalMap （下）](java/bu-fen-yuan-ma/threadlocalmap-xia.md)
   * [JVM对字符串变量的处理](java/jvm-dui-zi-fu-chuan-bian-liang-de-chu-li.md)
   * [Java中的常量池](java/java-zhong-de-chang-liang-chi/README.md)
     * [8种基本数据类型](java/java-zhong-de-chang-liang-chi/8-zhong-ji-ben-shu-ju-lei-xing.md)
@@ -69,5 +70,7 @@
     * [3.1 ACID](ioc/shi-wu/gai-nian.md)
     * [3.2 隔离级别](ioc/shi-wu/ge-li-ji-bie.md)
     * [3.3 传播机制](ioc/shi-wu/chuan-bo-ji-zhi.md)
+  * [4. 锁](ioc/4.-suo/README.md)
+    * [Untitled](ioc/4.-suo/untitled.md)
   * [参考资料](ioc/untitled2.md)
 

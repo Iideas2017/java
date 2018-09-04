@@ -1,4 +1,4 @@
-# ThreadLocalMap
+# ThreadLocalMap （上）
 
 ## 1. ThreadLocalMap详解
 
@@ -32,10 +32,9 @@ static class Entry extends WeakReference<ThreadLocal<?>> {
 
 Entry是一个以ThreadLocal为key,Object为value的键值对，另外需要注意的是这里的**threadLocal是弱引用，因为Entry继承了WeakReference，在Entry的构造方法中，调用了super\(k\)方法就会将threadLocal实例包装成一个WeakReferenece。**到这里我们可以用一个图来理解下thread,threadLocal,threadLocalMap，Entry之间的关系：
 
-![ThreadLocal&#x5404;&#x5F15;&#x7528;&#x95F4;&#x7684;&#x5173;&#x7CFB;](../../.gitbook/assets/image%20%2846%29.png)
+![ThreadLocal&#x5404;&#x5F15;&#x7528;&#x95F4;&#x7684;&#x5173;&#x7CFB;](../../.gitbook/assets/image%20%2848%29.png)
 
-注意上图中的实线表示强引用，虚线表示弱引用。如图所示，每个线程实例中可以通过threadLocals获取到threadLocalMap，而threadLocalMap实际上就是一个以threadLocal实例为key，任意对象为value的Entry数组。当我们为threadLocal变量赋值，实际上就是以当前threadLocal实例为key，值为value的Entry往这个threadLocalMap中存放。需要注意的是**Entry中的key是弱引用，当threadLocal外部强引用被置为null\(`threadLocalInstance=null`\),那么系统 GC 的时候，根据可达性分析，这个threadLocal实例就没有任何一条链路能够引用到它，这个ThreadLocal势必会被回收，这样一来，ThreadLocalMap中就会出现key为null的Entry，就没有办法访问这些key为null的Entry的value，如果当前线程再迟迟不结束的话，这些key为null的Entry的value就会一直存在一条强引用链：Thread Ref -&gt; Thread -&gt; ThreaLocalMap -&gt; Entry -&gt; value永远无法回收，造成内存泄漏。**当然，如果当前thread运行结束，threadLocal，threadLocalMap,Entry没有引用链可达，在垃圾回收的时候都会被系统进行回收。在实际开发中，会使用线程池去维护线程的创建和复用，比如固定大小的线程池，线程为了复用是不会主动结束的，所以，threadLocal的内存泄漏问题。  
-
+注意上图中的实线表示强引用，虚线表示弱引用。如图所示，每个线程实例中可以通过threadLocals获取到threadLocalMap，而threadLocalMap实际上就是一个以threadLocal实例为key，任意对象为value的Entry数组。当我们为threadLocal变量赋值，实际上就是以当前threadLocal实例为key，值为value的Entry往这个threadLocalMap中存放。需要注意的是**Entry中的key是弱引用，当threadLocal外部强引用被置为null\(`threadLocalInstance=null`\),那么系统 GC 的时候，根据可达性分析，这个threadLocal实例就没有任何一条链路能够引用到它，这个ThreadLocal势必会被回收，这样一来，ThreadLocalMap中就会出现key为null的Entry，就没有办法访问这些key为null的Entry的value，如果当前线程再迟迟不结束的话，这些key为null的Entry的value就会一直存在一条强引用链：Thread Ref -&gt; Thread -&gt; ThreaLocalMap -&gt; Entry -&gt; value永远无法回收，造成内存泄漏。**当然，如果当前thread运行结束，threadLocal，threadLocalMap,Entry没有引用链可达，在垃圾回收的时候都会被系统进行回收。在实际开发中，会使用**线程池**去维护线程的创建和复用，比如**固定大小的线程**池，线程为了复用是不会主动结束的，所以，threadLocal的内存泄漏问题。
 
 ### 1.2 set方法
 
@@ -85,7 +84,7 @@ set方法的关键部分**请看上面的注释**，主要有这样几点需要�
 
 1. threadLocal的hashcode?
 
-   ```text
+   ```java
     private final int threadLocalHashCode = nextHashCode();
     private static final int HASH_INCREMENT = 0x61c88647;
     private static AtomicInteger nextHashCode =new AtomicInteger();
@@ -97,19 +96,19 @@ set方法的关键部分**请看上面的注释**，主要有这样几点需要�
     }
    ```
 
-   从源码中我们可以清楚的看到threadLocal实例的hashCode是通过nextHashCode\(\)方法实现的，该方法实际上总是用一个AtomicInteger加上0x61c88647来实现的。0x61c88647这个数是有特殊意义的，它能够保证hash表的每个散列桶能够均匀的分布，这是`Fibonacci Hashing`，关于更多介绍可以看[这篇文章的threadLocal散列值部分](https://www.cnblogs.com/zhangjk1993/archive/2017/03/29/6641745.html)。也正是能够均匀分布，所以threadLocal选择使用开放地址法来解决hash冲突的问题。
+   从源码中我们可以清楚的看到threadLocal实例的hashCode是通过nextHashCode\(\)方法实现的，该方法实际上总是用一个AtomicInteger加上0x61c88647来实现的。0x61c88647这个数是有特殊意义的，它能够保证hash表的每个散列桶能够均匀的分布，这是`Fibonacci Hashing`。也正是能够均匀分布，所以threadLocal选择使用**开放地址法来解决hash冲突**的问题。
 
 2. 怎样确定新值插入到哈希表中的位置？
 
-   该操作源码为：`key.threadLocalHashCode & (len-1)`，同hashMap和ConcurrentHashMap等容器的方式一样，利用当前key\(即threadLocal实例\)的hashcode与哈希表大小相与，因为哈希表大小总是为2的幂次方，所以相与等同于一个取模的过程，这样就可以通过Key分配到具体的哈希桶中去。而至于为什么取模要通过位与运算的原因就是位运算的执行效率远远高于了取模运算。
+   该操作源码为：`key.threadLocalHashCode & (len-1)`，同hashMap和ConcurrentHashMap等容器的方式一样，利用当前key\(即threadLocal实例\)的hashcode与哈希表大小相与，因为哈希表大小总是为2的幂次方，所以相与等同于一个取模的过程，这样就可以通过Key分配到具体的哈希桶中去。而至于为什么取模要通过位与运算的原因就是**位运算的执行效率远远高于了取模运算**。
 
-3. 怎样解决hash冲突？
+3. 怎样**解决hash冲突**？
 
-   源码中通过`nextIndex(i, len)`方法解决hash冲突的问题，该方法为`((i + 1 < len) ? i + 1 : 0);`，也就是不断往后线性探测，当到哈希表末尾的时候再从0开始，成环形。
+   源码中通过`nextIndex(i, len)`方法解决hash冲突的问题，该方法为`((i + 1 < len) ? i + 1 : 0);`，也就是不断**往后线性探测**，当**到哈希表末尾的时候再从0开始，成环形**。
 
 4. 怎样解决“脏”Entry？
 
-   在分析threadLocal,threadLocalMap以及Entry的关系的时候，我们已经知道使用threadLocal有可能存在内存泄漏（对象创建出来后，在之后的逻辑一直没有使用该对象，但是垃圾回收器无法回收这个部分的内存），在源码中针对这种key为null的Entry称之为“stale entry”，直译为不新鲜的entry，我把它理解为“脏entry”，自然而然，Josh Bloch and Doug Lea大师考虑到了这种情况,在set方法的for循环中寻找和当前Key相同的可覆盖entry的过程中通过**replaceStaleEntry**方法解决脏entry的问题。如果当前table\[i\]为null的话，直接插入新entry后也会通过**cleanSomeSlots**来解决脏entry的问题，关于[cleanSomeSlots和replaceStaleEntry方法，会在详解threadLocal内存泄漏中讲到，具体可看那篇文章](https://www.jianshu.com/p/dde92ec37bd1)
+   在分析threadLocal,threadLocalMap以及Entry的关系的时候，我们已经知道使用threadLocal有可能存在内存泄漏（对象创建出来后，在之后的逻辑一直没有使用该对象，但是垃圾回收器无法回收这个部分的内存），在源码中针对这种key为null的Entry称之为“stale entry”，直译为不新鲜的entry，我把它理解为“脏entry”，自然而然，Josh Bloch and Doug Lea大师考虑到了这种情况,在set方法的for循环中寻找和当前Key相同的可覆盖entry的过程中通过**replaceStaleEntry**方法解决脏entry的问题。如果当前table\[i\]为null的话，直接插入新entry后也会通过**cleanSomeSlots**来解决脏entry的问题，关于cleanSomeSlots和replaceStaleEntry方法。
 
 5. 如何进行扩容？
 
@@ -225,7 +224,7 @@ private Entry getEntryAfterMiss(ThreadLocal<?> key, int i, Entry e) {
 }
 ```
 
-这个方法同样很好理解，通过nextIndex往后环形查找，如果找到和查询的key相同的entry的话就直接返回，如果在查找过程中遇到脏entry的话使用expungeStaleEntry方法进行处理。到目前为止**，为了解决潜在的内存泄漏的问题，在set，resize,getEntry这些地方都会对这些脏entry进行处理，可见为了尽可能解决这个问题几乎无时无刻都在做出努力。**
+这个方法同样很好理解，通过nextIndex往后环形查找，如果找到和查询的key相同的entry的话就直接返回，如果在查找过程中遇到脏entry的话使用expungeStaleEntry方法进行处理。到目前为止**，为了解决潜在的内存泄漏的问题，在set，resize, getEntry这些地方都会对这些脏entry进行处理，可见为了尽可能解决这个问题几乎无时无刻都在做出努力。**
 
 ### 1.5 remove
 
@@ -251,7 +250,7 @@ private void remove(ThreadLocal<?> key) {
 }
 ```
 
-该方法逻辑很简单，通过往后环形查找到与指定key相同的entry后，先通过clear方法将key置为null后，使其转换为一个脏entry，然后调用expungeStaleEntry方法将其value置为null，以便垃圾回收时能够清理，同时将table\[i\]置为null。
+该方法逻辑很简单，通过往后环形查找到与指定key相同的entry后，先**通过clear方法将key置为null后，使其转换为一个脏entry，然后调用expungeStaleEntry方法将其value置为null**，以便垃圾回收时能够清理，同时将table\[i\]置为null。
 
 ## 2. ThreadLocal的使用场景
 

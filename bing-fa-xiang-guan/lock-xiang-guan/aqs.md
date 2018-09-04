@@ -16,9 +16,9 @@
 
        **状态的更新使用getState, setState 以及compareAndSetState 这三个方法**。
 
-![AQS&#x53EF;&#x91CD;&#x5199;&#x7684;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%2861%29.png)
+![AQS&#x53EF;&#x91CD;&#x5199;&#x7684;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%2866%29.png)
 
-![AQS&#x63D0;&#x4F9B;&#x7684;&#x6A21;&#x677F;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%2828%29.png)
+![AQS&#x63D0;&#x4F9B;&#x7684;&#x6A21;&#x677F;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%2830%29.png)
 
 AQS提供的模板方法可以分为3类：
 
@@ -32,7 +32,7 @@ AQS提供的模板方法可以分为3类：
 
  获取锁失败进行入队操作，获取锁成功进行出队操作
 
-![&#x540C;&#x6B65;&#x961F;&#x5217;&#x6A21;&#x578B;](../../.gitbook/assets/image%20%2827%29.png)
+![&#x540C;&#x6B65;&#x961F;&#x5217;&#x6A21;&#x578B;](../../.gitbook/assets/image%20%2829%29.png)
 
 * 其中head指向同步队列的头部，注意**head为空结点**，不存储信息。而tail则是同步队列的队尾，同步队列采用的是**双向链表**的结构这样可方便队列**进行结点增删操作**。
 * **state**变量则是代表**同步**状态，执行当线程调用lock方法进行加锁后，如果此时state的值为0，则说明当前线程可以获取到锁\(在本篇文章中，锁和同步状态代表同一个意思\)，同时将state设置为1，表示获取成功。如果state已为1，也就是当前锁已被其他线程持有，那么当前执行线程将被封装为Node结点加入同步队列等待。
@@ -40,9 +40,9 @@ AQS提供的模板方法可以分为3类：
 
 ### 3.1  独占式锁的获取
 
-![](../../.gitbook/assets/image%20%2850%29.png)
+![](../../.gitbook/assets/image%20%2854%29.png)
 
-![](../../.gitbook/assets/image%20%2836%29.png)
+![](../../.gitbook/assets/image%20%2838%29.png)
 
 ### 3.2 独占锁的释放
 
@@ -58,7 +58,7 @@ AQS提供的模板方法可以分为3类：
 
 ## 4. 等待队列
 
-![&#x7B49;&#x5F85;&#x961F;&#x5217;](../../.gitbook/assets/image%20%284%29.png)
+![&#x7B49;&#x5F85;&#x961F;&#x5217;](../../.gitbook/assets/image%20%285%29.png)
 
 **等待队列是一个单向队列;**
 
