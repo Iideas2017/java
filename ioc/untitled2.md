@@ -14,3 +14,5 @@
 
 {% embed data="{\"url\":\"https://blog.csdn.net/hcmony/article/details/77850183\",\"type\":\"link\",\"title\":\"Spring事务管理与传播机制详解以及使用实例 - CSDN博客\",\"description\":\"写这篇博客之前我首先读了《spring in action》，之后在网上看了一些关于Spring事务管理的文章，感觉都没有讲全，这里就将书上的和网上关于事务的知识总结一下，参考的文章如下：   Spring事务机制详解Spring事务配置的五种方式Spring中的事务管理实例详解   1 初步理解  理解事务之前，先讲一个你日常生活中最常干的事：取钱。  比如你去ATM机取100\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://blog.csdn.net/Java\_3y/article/details/81173287\",\"type\":\"link\",\"title\":\"数据库两大神器【索引和锁】 - CSDN博客\",\"description\":\"前言     只有光头才能变强   索引和锁在数据库中可以说是非常重要的知识点了，在面试中也会经常会被问到的。  本文力求简单讲清每个知识点，希望大家看完能有所收获     声明：如果没有说明具体的数据库和存储引擎，默认指的是MySQL中的InnoDB存储引擎     一、索引  在之前，我对索引有以下的认知：   索引可以加快数据库的检索速度 表经常进行INSERT/UPDATE/DELETE操...\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
