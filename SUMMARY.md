@@ -71,6 +71,8 @@
     * [3.2 隔离级别](ioc/shi-wu/ge-li-ji-bie.md)
     * [3.3 传播机制](ioc/shi-wu/chuan-bo-ji-zhi.md)
   * [4. 锁](ioc/4.-suo/README.md)
-    * [Untitled](ioc/4.-suo/untitled.md)
+    * [4.1 分类](ioc/4.-suo/untitled.md)
+    * [4.2 MVCC](ioc/4.-suo/4.2-mvcc-he-ge-li-ji-bie.md)
+    * [4.3 锁](ioc/4.-suo/4.3-suo.md)
   * [参考资料](ioc/untitled2.md)
 
