@@ -19,7 +19,7 @@ CREATE TABLE `user2` (
 explain select * from user2 where username = '1' and password = '1';
 ```
 
-![](../../.gitbook/assets/image%20%2848%29.png)
+![](../../.gitbook/assets/image%20%2849%29.png)
 
  当没有username时，不会使用索引查询：
 
@@ -27,7 +27,7 @@ explain select * from user2 where username = '1' and password = '1';
 explain select * from user2 where password = '1';
 ```
 
-![](../../.gitbook/assets/image%20%2867%29.png)
+![](../../.gitbook/assets/image%20%2868%29.png)
 
  当有username，但顺序乱序时也可以使用索引：
 
@@ -35,7 +35,7 @@ explain select * from user2 where password = '1';
 explain select * from user2 where password = '1' and username = '1';
 ```
 
-![](../../.gitbook/assets/image%20%2889%29.png)
+![](../../.gitbook/assets/image%20%2890%29.png)
 
 观察上述两个explain结果中的type字段。查询中分别是：
 
