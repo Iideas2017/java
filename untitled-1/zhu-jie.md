@@ -1,4 +1,4 @@
-# 注解
+# 4. 注解
 
 ## 1. 注解定义
 
@@ -15,7 +15,22 @@ return"This is String Representation of current object.";
 
 Annotation是一种应用于类、方法、参数、变量、构造器及包声明中的特殊修饰符。它是一种由JSR-175标准选择用来描述元数据的一种工具。
 
-## 2. 为什么要引入注解？
+## 2. 常见标准的Annotation
+
+###  1）Override
+
+         java.lang.Override是一个**标记类型**注解，它被用作**标注方法**。它说明了被标注的方法重载了父类的方法，**起到了断言**的作用。如果我们使用了这种注解在一个没有覆盖父类方法的方法时，java编译器将以一个编译错误来警示。
+
+### 2）Deprecated
+
+        Deprecated也是一种**标记类型**注解。当一个**类型或者类型成员**使用@Deprecated修饰的话，编译器将**不鼓励使用这个被标注的程序元素。**所以使用这种修饰具有一定的“延续性”：如果我们在代码中通过继承或者覆盖的方式使用了这个过时的类型或者成员，虽然继承或者覆盖后的类型或者成员并不是被声明为@Deprecated，但编译器仍然要报警。
+
+### 3）SuppressWarnings
+
+        SuppressWarning不是一个标记类型注解。它**有一个类型为String\[\]的成员**，这个成员的值为被禁止的警告名。对于javac编译器来讲，被-Xlint选项有效的警告名也同样对@SuppressWarings有效，同时编译器忽略掉无法识别的警告名。  
+　　@SuppressWarnings\("unchecked"\)
+
+## 3. 为什么要引入注解？
 
  使用Annotation之前\(甚至在使用之后\)，XML被广泛的应用于**描述元数据**。不知何时开始一些应用开发人员和架构师发现XML的维护越来越糟糕了。他们希望使用一些和代码紧耦合的东西，而不是像XML那样和代码是松耦合的\(在某些情况下甚至是完全分离的\)代码描述。
 
@@ -25,7 +40,7 @@ Annotation是一种应用于类、方法、参数、变量、构造器及包声�
 
 目前，许多框架将XML和Annotation两种方式结合使用，平衡两者之间的利弊。
 
-## 3.  元注解
+## 4.  元注解
 
 J2SE5.0版本在 java.lang.annotation提供了四种元注解，专门注解其他的注解：
 
@@ -69,9 +84,16 @@ ElementType.PACKAGE 用于记录java文件的package信息`
 
 **@Inherited** – 定义该注释和子类的关系
 
-## 4. Annotation是如何工作的？
+## 5. Annotation是如何工作的？
 
   大体分为三部分: 定义注解、使用注解、解析注解
+
+ 自定义注解类编写的一些规则:  
+  1. Annotation型定义为**@interface**, 所有的Annotation会**自动继承**java.lang.Annotation这一接口,并且不能再去继承别的类或是接口.  
+  2. 参数成员**只能用public或默认\(default\)**这两个访问权修饰  
+  3. 参数成员只能用**基本类型**byte,short,char,int,long,float,double,boolean八种基本数据类型和String、Enum、Class、annotations**等数据类型,**以及这一些类型的数组.  
+  4. 要获取**类方法和字段的注解信息**，必须通过Java的**反射技术**来获取 Annotation对象,因为你除此之外没有别的获取注解对象的方法  
+  5. 注解也可以没有定义成员, 不过这样注解就没啥用了
 
 ### 1\) 定义注解:
 

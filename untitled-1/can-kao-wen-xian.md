@@ -6,3 +6,5 @@
 
 {% embed data="{\"url\":\"https://blog.csdn.net/u014563989/article/details/60570794\",\"type\":\"link\",\"title\":\"Java注解的原理\(通俗易懂\) - CSDN博客\",\"description\":\"自Java5.0版本引入注解之后，它就成为了Java平台中非常重要的一部分。开发过程中，我们也时常在应用代码中会看到诸如@Override，@Deprecated这样的注解。这篇文章中，我将向大家讲述到底什么是注解，为什么要引入注解，注解是如何工作的，如何编写自定义的注解\(通过例子\)，什么情况下可以使用注解以及最新注解和ADF\(应用开发框架\)。这会花点儿时间，所以为自己准备一杯咖啡，让我们\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html\",\"type\":\"link\",\"title\":\"注解Annotation实现原理与自定义注解例子 - 贾树丙 - 博客园\",\"description\":\"什么是注解？ 对于很多初次接触的开发者来说应该都有这个疑问？Annontation是Java5开始引入的新特征，中文名称叫注解。它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metada\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
+
