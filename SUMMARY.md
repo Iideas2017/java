@@ -97,4 +97,6 @@
     * [基础概念](qi-ta/rpc/ji-chu-gai-nian.md)
   * [2. 消息队列](qi-ta/2.-xiao-xi-dui-lie.md)
   * [参考资料](qi-ta/can-kao-zi-liao.md)
+  * [3. Redis 数据库](qi-ta/3.-redis-shu-ju-ku/README.md)
+    * [3.1 Unix网络编程5种I/O模型](qi-ta/3.-redis-shu-ju-ku/3.1-unix-wang-luo-bian-cheng-5-zhong-io-mo-xing.md)
 

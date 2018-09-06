@@ -2,7 +2,7 @@
 
 ## **Tomcat类加载体系结构**
 
-![Tomcat&#x7C7B;&#x52A0;&#x8F7D;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%28101%29.png)
+![Tomcat&#x7C7B;&#x52A0;&#x8F7D;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%28107%29.png)
 
 
 
