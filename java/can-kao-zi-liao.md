@@ -6,3 +6,5 @@
 
 {% embed data="{\"url\":\"https://blog.csdn.net/buyaoshuohua1/article/details/77337750\",\"type\":\"link\",\"title\":\"创建Java对象的五种方式以及JVM对字符串处理 - CSDN博客\",\"description\":\"看了原文章写的很不错，自己整理了一下，转载分享。原文地址：http://www.cnblogs.com/xiaoxuetu/archive/2013/03/28/2987239.html  一：获取Java对象的五种方式。 1。通过关键字new调用构造器创建Java对象，eg ：String str = new String\(\\\"hello\\\"\); 2。通过Class对象的newInstan\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://blog.csdn.net/baiye\_xing/article/details/73123753\",\"type\":\"link\",\"title\":\"【NIO引入】BIO、AIO与NIO的区别 - CSDN博客\",\"description\":\"同步异步与阻塞非阻塞的区别1.同步例：买饭：自己亲自去饭馆买饭，这就是同步（自己处理IO读写）2.异步例：买饭：叫外卖送到家，这就是异步（IO读写委托给OS处理，需要将数据缓冲区地址和大小传给OS\(饭名和地址\)，OS需要支持异步IO操作API）3.阻塞例：办理业务：一直排队等待（调用会一直阻塞到读写完成才返回）4.非阻塞例：办理业务：抽号后就可以做其他事，如果你等不急，可以去问工作人员到你了没，如果\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+

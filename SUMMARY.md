@@ -7,6 +7,8 @@
     * [数据类型](java/java-ji-chu-xiang-guan/untitled-1.md)
     * [Java 中“==”和equals（Object obj）](java/java-ji-chu-xiang-guan/java-zhong-he-equalsobject-obj.md)
     * [String 不可变类](java/java-ji-chu-xiang-guan/untitled.md)
+    * [BIO、NIO、AIO](java/java-ji-chu-xiang-guan/bio-nio-aio/README.md)
+      * [基础概念](java/java-ji-chu-xiang-guan/bio-nio-aio/ji-chu-gai-nian.md)
   * [Java集合相关](java/ji-he-xiang-guan/README.md)
     * [Java集合框架](java/ji-he-xiang-guan/ji-he-kuang-jia.md)
     * [ArrayList、Vector、LinkedList 的区别](java/ji-he-xiang-guan/arraylistvectorlinkedlist-de-qu-bie.md)
@@ -89,4 +91,6 @@
     * [Jdk 动态代理](untitled-1/aop/jdk-dong-tai-dai-li.md)
   * [4. 注解](untitled-1/zhu-jie.md)
   * [参考文献](untitled-1/can-kao-wen-xian.md)
+* [其他](qi-ta/README.md)
+  * [RPC](qi-ta/rpc.md)
 
