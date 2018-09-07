@@ -12,3 +12,5 @@
 
 {% embed data="{\"url\":\"https://www.cnblogs.com/diegodu/p/6823855.html\",\"type\":\"link\",\"title\":\"java BIO/NIO/AIO 学习 - 穆穆兔兔 - 博客园\",\"description\":\"一、了解Unix网络编程5种I/O模型 1.1、阻塞式I/O模型 阻塞I/O\(blocking I/O）模型，进程调用recvfrom，其系统调用直到数据报到达且被拷贝到应用进程的缓冲区中或者发生错误\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://blog.csdn.net/b1303110335/article/details/79557292\",\"type\":\"link\",\"title\":\"什么是 RPC 框架 - CSDN博客\",\"description\":\"rpc框架解释  谁能用通俗的语言解释一下什么是 RPC 框架？ - 远程过程调用协议RPC（Remote Procedure Call Protocol\)  首先了解什么叫RPC，为什么要RPC，RPC是指远程过程调用，也就是说两台服务器A，B，一个应用部署在A服务器上，想要调用B服务器上应用提供的函数/方法，由于不在一个内存空间，不能直接调用，需要通过网络来表达调用的语义和传达调用的数据。比如...\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
