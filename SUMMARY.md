@@ -87,7 +87,7 @@
   * [0. 基础](untitled-1/0.-ji-chu/README.md)
     * [1. 注解](untitled-1/0.-ji-chu/zhu-jie.md)
     * [2. 反射](untitled-1/0.-ji-chu/2.1-fan-she.md)
-    * [3.Jdk 动态代理](untitled-1/0.-ji-chu/jdk-dong-tai-dai-li.md)
+    * [3. Jdk 动态代理](untitled-1/0.-ji-chu/jdk-dong-tai-dai-li.md)
   * [1. Spring 框架概述](untitled-1/spring-kuang-jia-gai-shu.md)
   * [2. IOC](untitled-1/ioc.md)
   * [3. AOP](untitled-1/aop.md)
