@@ -85,7 +85,8 @@
   * [参考资料](suan-fa-ji-chu/can-kao-zi-liao.md)
 * [6. Spring](untitled-1/README.md)
   * [1. Spring 框架概述](untitled-1/spring-kuang-jia-gai-shu.md)
-  * [2. IOC](untitled-1/ioc.md)
+  * [2. IOC](untitled-1/ioc/README.md)
+    * [2.1 反射](untitled-1/ioc/2.1-fan-she.md)
   * [3. AOP](untitled-1/aop/README.md)
     * [Jdk 动态代理](untitled-1/aop/jdk-dong-tai-dai-li.md)
   * [4. 注解](untitled-1/zhu-jie.md)
@@ -99,4 +100,6 @@
   * [3. Redis 数据库](qi-ta/3.-redis-shu-ju-ku/README.md)
     * [3.1 Unix网络编程5种I/O模型](qi-ta/3.-redis-shu-ju-ku/3.1-unix-wang-luo-bian-cheng-5-zhong-io-mo-xing.md)
   * [参考资料](qi-ta/can-kao-zi-liao.md)
+  * [4. 设计模式](qi-ta/4.-she-ji-mo-shi/README.md)
+    * [4.1 代理模式](qi-ta/4.-she-ji-mo-shi/4.1-dai-li-mo-shi.md)
 
