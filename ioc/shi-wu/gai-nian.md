@@ -2,7 +2,7 @@
 
 
 
-![](../../.gitbook/assets/image%20%2892%29.png)
+![](../../.gitbook/assets/image%20%28131%29.png)
 
 ## 1.  ACID
 
