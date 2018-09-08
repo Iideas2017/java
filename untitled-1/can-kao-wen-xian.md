@@ -1,4 +1,4 @@
-# 参考文献
+# 参考资料
 
 {% embed data="{\"url\":\"https://www.cnblogs.com/qlqwjy/p/7139068.html\",\"type\":\"link\",\"title\":\"各大框架都在使用注解，浅谈注解的使用及原理以及类加载器 - QiaoZhi - 博客园\",\"description\":\"一、类加载器 1．什么是类加载器，作用是什么？ 类加载器就加载字节码文件\(.class） 2．类加载器的种类 类加载器有三种，不同类加载器加载不同的 1）BootStrap：引导类加载器：加载都是最基\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
@@ -11,6 +11,8 @@
 {% embed data="{\"url\":\"http://www.cnblogs.com/xiaoluo501395377/p/3383130.html\",\"type\":\"link\",\"title\":\"java的动态代理机制详解 - xiaoluo501395377 - 博客园\",\"description\":\"本篇随笔详细的讲解了java中的动态代理机制，这个知识点非常非常的重要，包括我们Spring的AOP其就是通过动态代理的机制实现的，所以我们必须要好好的理解动态代理的机制。\",\"icon\":{\"type\":\"icon\",\"url\":\"http://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
 {% embed data="{\"url\":\"https://blog.csdn.net/codejas/article/details/78635926\",\"type\":\"link\",\"title\":\"Java 反射机制 - CSDN博客\",\"description\":\"Java 反射机制是在运行状态中，对于任意一个类，都能够获得这个类的所有属性和方法，对于任意一个对象都能够调用它的任意一个属性和方法。这种在运行时动态的获取信息以及动态调用对象的方法的功能称为Java 的反射机制。      Class 类与java.lang.reflect 类库一起对反射的概念进行了支持，该类库包含了Field,Method,Constructor类\(每个类都实现了Member\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://www.cnblogs.com/tech-bird/p/3525336.html\",\"type\":\"link\",\"title\":\"java中的反射 - 飞鸟快跑 - 博客园\",\"description\":\"主要介绍以下几方面内容理解 Class 类理解 Java 的类加载机制学会使用 ClassLoader 进行类加载理解反射的机制掌握 Constructor、Method、Field 类的用法理解并掌\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
 {% embed data="{\"url\":\"https://www.cnblogs.com/tech-bird/p/3525336.html\",\"type\":\"link\",\"title\":\"java中的反射 - 飞鸟快跑 - 博客园\",\"description\":\"主要介绍以下几方面内容理解 Class 类理解 Java 的类加载机制学会使用 ClassLoader 进行类加载理解反射的机制掌握 Constructor、Method、Field 类的用法理解并掌\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
