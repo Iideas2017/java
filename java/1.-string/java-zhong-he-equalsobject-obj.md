@@ -1,4 +1,4 @@
-# Java 中“==”和equals（Object obj）
+# 1.4 “==”和equals
 
 参考本人博客：
 

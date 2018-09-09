@@ -14,3 +14,13 @@
 
 {% embed data="{\"url\":\"https://blog.csdn.net/b1303110335/article/details/79557292\",\"type\":\"link\",\"title\":\"什么是 RPC 框架 - CSDN博客\",\"description\":\"rpc框架解释  谁能用通俗的语言解释一下什么是 RPC 框架？ - 远程过程调用协议RPC（Remote Procedure Call Protocol\)  首先了解什么叫RPC，为什么要RPC，RPC是指远程过程调用，也就是说两台服务器A，B，一个应用部署在A服务器上，想要调用B服务器上应用提供的函数/方法，由于不在一个内存空间，不能直接调用，需要通过网络来表达调用的语义和传达调用的数据。比如...\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://www.jianshu.com/p/e8fb89bb3a61\",\"type\":\"link\",\"title\":\"一致性HASH算法详解\",\"description\":\"基本场景 比如你有 N 个 cache 服务器（后面简称 cache ），那么如何将一个对象 object 映射到 N 个 cache 上呢，你很可能会采用类似下面的通用方法计算 object ...\",\"icon\":{\"type\":\"icon\",\"url\":\"https://cdn2.jianshu.io/assets/apple-touch-icons/152-bf209460fc1c17bfd3e2b84c8e758bc11ca3e570fd411c3bbd84149b97453b99.png\",\"width\":152,\"height\":152,\"aspectRatio\":1}}" %}
+
+{% embed data="{\"url\":\"https://www.cnblogs.com/lpfuture/p/5796398.html\",\"type\":\"link\",\"title\":\"一致性哈希算法原理 - lpfuture - 博客园\",\"description\":\"一致性Hash算法背景 一致性哈希算法在1997年由麻省理工学院的Karger等人在解决分布式Cache中提出的，设计目标是为了解决因特网中的热点\(Hot spot\)问题，初衷和CARP十分类似。一致\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://blog.csdn.net/sun\_qiangwei/article/details/80388210\",\"type\":\"link\",\"title\":\"缓存雪崩问题及处理方案 - CSDN博客\",\"description\":\"一、什么是缓存雪崩缓存雪崩就是指缓存由于某些原因（比如 宕机、cache服务挂了或者不响应）整体crash掉了，导致大量请求到达后端数据库，从而导致数据库崩溃，整个系统崩溃，发生灾难。下面的就是一个雪崩的简单过程：1、redis集群彻底崩溃2、缓存服务大量对redis的请求hang住，占用资源3、缓存服务大量的请求打到源头服务去查询mysql，直接打死mysql4、源头服务因为mysql被打死也崩...\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://baijiahao.baidu.com/s?id=1596875884081102887&wfr=spider&for=pc\",\"type\":\"link\",\"title\":\"常见的Redis架构设计缺陷（上）- 缓存穿透\",\"icon\":{\"type\":\"icon\",\"url\":\"https://gss0.bdstatic.com/5bd1bjqh\_Q23odCf/static/wiseindex/img/screen\_icon\_new.png\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://www.cnblogs.com/fidelQuan/p/4543387.html\",\"type\":\"link\",\"title\":\"缓存穿透与缓存雪崩 - 超神杀戮 - 博客园\",\"description\":\"缓存穿透什么是缓存穿透？一般的缓存系统，都是按照key去缓存查询，如果不存在对应的value，就应该去后端系统查找（比如DB）。如果key对应的value是一定不存在的，并且对该key并发请求量很大，\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
+

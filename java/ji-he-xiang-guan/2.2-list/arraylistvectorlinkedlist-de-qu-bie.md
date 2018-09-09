@@ -10,20 +10,20 @@
 ###  1. 继承方式不同
 
 ```java
-        public class ArrayList<E> extends AbstractList<E>
-                implements List<E>, RandomAccess, Cloneable, java.io.Serializable
+public class ArrayList<E> extends AbstractList<E>
+        implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 ```
 
 ```java
-        public class Vector<E>
+public class Vector<E>
             extends AbstractList<E>
-            implements List<E>, RandomAccess, Cloneable, java.io.Serializable
+        implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 ```
 
 ```java
-        public class LinkedList<E>
+public class LinkedList<E>
             extends AbstractSequentialList<E>
-            implements List<E>, Deque<E>, Cloneable, java.io.Serializable
+        implements List<E>, Deque<E>, Cloneable, java.io.Serializable
 ```
 
 1. ArrayList和Vector继承方式**相同**，而LinkedList与上述两个**不同**；
@@ -36,21 +36,21 @@
 ####         1. ArrayList和Vector都是使用**Objec的数组形式（需要扩容）**来存储的；
 
 ```java
-         transient Object[] elementData;              // ArryList
+     transient Object[] elementData;              // ArryList
          
-         protected Object[] elementData;              // Vector
+     protected Object[] elementData;              // Vector
          
-         private static class Node<E> {               //LinkedList
-                E item;
-                Node<E> next;
-                Node<E> prev;
+     private static class Node<E> {               //LinkedList
+            E item;
+            Node<E> next;
+            Node<E> prev;
 
-                Node(Node<E> prev, E element, Node<E> next) {
-                    this.item = element;
-                    this.next = next;
-                    this.prev = prev;
-                }
+            Node(Node<E> prev, E element, Node<E> next) {
+                this.item = element;
+                this.next = next;
+                this.prev = prev;
             }
+        }
 ```
 
         动态扩容：如果元素的数目超出了**内部数组**目前的长度它们都需要扩展内部数组的长度；**Vector缺省情况下自动增长原来一倍的数组长度，ArrayList是原来的50%**, 所以最后你获得的这个集合所占的空间总是比你实际需要的要大。
@@ -180,7 +180,7 @@ public synchronized void ensureCapacity(int minCapacity) {
 
 ####        2. 在LinkedList中有一个私有的内部类，定义如下： 
 
-```text
+```java
      private static class Entry {   
              Object element;   
              Entry next;   
@@ -194,28 +194,30 @@ public synchronized void ensureCapacity(int minCapacity) {
 
     trimToSize方法：
 
-```text
-public void trimToSize() {                            //ArryList
+```java
+public void trimToSize() {                    //ArryList
         modCount++;
         if (size < elementData.length) {
-            elementData = (size == 0)                 //size为List的大小，而elementData.length为内部数组长度
+            elementData = (size == 0) 
               ? EMPTY_ELEMENTDATA
               : Arrays.copyOf(elementData, size);
+              //size为List的大小，而elementData.length为内部数组长度
         }
     }
 ```
 
-```text
+```java
 public synchronized void trimToSize() {               //Vector
         modCount++;
-        int oldCapacity = elementData.length;         //elementCount为List的大小，而elementData.length为内部数组长度
+        int oldCapacity = elementData.length;         
         if (elementCount < oldCapacity) {
             elementData = Arrays.copyOf(elementData, elementCount);
         }
+        //elementCount为List的大小，而elementData.length为内部数组长度
     }
 ```
 
-### 4. 插入、删除、修改、查找（增删改查）
+### 4. 增删改查
 
         ArrayList和Vector中，从指定的位置（用index）**查找、修改**一个对象，或在集合的**末尾插入、删除**一个对象的时间是一样的，可表示为**O\(1\)**。但是，如果在集合的其他位置**增加**或**移除**元素那么花费的时间会呈线形增长：**O\(n-i\)**，其中n代表集合中元素的个数，i代表元素增加或移除元素的索引位置。
 

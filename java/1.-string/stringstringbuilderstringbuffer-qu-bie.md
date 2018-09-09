@@ -2,7 +2,7 @@
 description: 比较三个java类的区别
 ---
 
-# String、StringBuilder、StringBuffer区别
+# 1.5 StringBuilder和StringBuffer
 
         这三个类之间的区别主要是在两个方面，即**运行速度**和**线程安全**这两方面。
 
