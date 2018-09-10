@@ -28,5 +28,7 @@
 
 {% embed data="{\"url\":\"https://blog.csdn.net/liupeng\_qwert/article/details/77263187\",\"type\":\"link\",\"title\":\"单进程单线程的Redis如何能够高并发 - CSDN博客\",\"description\":\"参考文档：  （1）http://yaocoder.blog.51cto.com/2668309/888374  （2）http://www.cnblogs.com/syyong/p/6231326.html1、基本原理           采用多路 I/O 复用技术可以让单个线程高效的处理多个连接请求（尽量减少网络IO的时间消耗）           （1）为什么不采用多进程或多线程处理？   多\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
 
-[https://blog.csdn.net/nyyjs/article/details/76209036](https://blog.csdn.net/nyyjs/article/details/76209036)
+{% embed data="{\"url\":\"https://blog.csdn.net/nyyjs/article/details/76209036\",\"type\":\"link\",\"title\":\"NIO（一）——阻塞/非阻塞/同步/异步/NIO/select/epoll基本概念 - CSDN博客\",\"description\":\"这个系列是我对NIO的个人理解，某些概念难免会与有理解上的偏差，希望各路大神能给在下指点出来，感激不尽！IO一般指的是内核与外部进行数据交互的所发生的事情。典型分为网络IO（socket），磁盘IO（文件），管道IO（pipe）等几类。我们将主要介绍网络IO这一部分。  一，  阻塞/非阻塞/同步/异步  谈及网络IO，都会谈到阻塞，非阻塞，同步，异步这几个概念。我们先从IO的过程讲起。  IO主要\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://blog.csdn.net/liu136313/article/details/50520993\",\"type\":\"link\",\"title\":\"Redis与Reactor模式 - CSDN博客\",\"description\":\"最近看了Redis的设计与实现，这本书写的还不错，看完后对Redis的理解有很大的帮助。另外，作者整理了一份Redis源码注释，大家可以clone下来阅读。 Redis是开源的缓存数据库，由于其高性能而受到大家的欢迎。同时，它的代码量只有6w多行，相比起mysql动则上百万行的代码量，实现比较简单。 Redis中有很多方面都很有意思，在这篇文章中我想探讨的是Redis中的Reactor模式。\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
 
