@@ -24,3 +24,9 @@
 
 {% embed data="{\"url\":\"https://www.cnblogs.com/fidelQuan/p/4543387.html\",\"type\":\"link\",\"title\":\"缓存穿透与缓存雪崩 - 超神杀戮 - 博客园\",\"description\":\"缓存穿透什么是缓存穿透？一般的缓存系统，都是按照key去缓存查询，如果不存在对应的value，就应该去后端系统查找（比如DB）。如果key对应的value是一定不存在的，并且对该key并发请求量很大，\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://www.cnblogs.com/wujing-hubei/p/6111347.html\",\"type\":\"link\",\"title\":\"socket阻塞与非阻塞，同步与异步、I/O模型，select与poll、epoll比较 - wj\_hubei - 博客园\",\"description\":\"1. 概念理解 在进行网络编程时，我们常常见到同步\(Sync\)/异步\(Async\)，阻塞\(Block\)/非阻塞\(Unblock\)四种调用方式： 同步/异步主要针对C端: 同步： 所谓同步，就\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://blog.csdn.net/liupeng\_qwert/article/details/77263187\",\"type\":\"link\",\"title\":\"单进程单线程的Redis如何能够高并发 - CSDN博客\",\"description\":\"参考文档：  （1）http://yaocoder.blog.51cto.com/2668309/888374  （2）http://www.cnblogs.com/syyong/p/6231326.html1、基本原理           采用多路 I/O 复用技术可以让单个线程高效的处理多个连接请求（尽量减少网络IO的时间消耗）           （1）为什么不采用多进程或多线程处理？   多\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
+[https://blog.csdn.net/nyyjs/article/details/76209036](https://blog.csdn.net/nyyjs/article/details/76209036)
+

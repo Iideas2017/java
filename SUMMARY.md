@@ -102,8 +102,10 @@
   * [3. Redis 数据库](qi-ta/3.-redis-shu-ju-ku/README.md)
     * [3.1 Unix网络编程5种I/O模型](qi-ta/3.-redis-shu-ju-ku/3.1-unix-wang-luo-bian-cheng-5-zhong-io-mo-xing.md)
     * [3.2 一致性hash](qi-ta/3.-redis-shu-ju-ku/3.2-yi-zhi-xing-hash.md)
-    * [3.3 缓存穿透](qi-ta/3.-redis-shu-ju-ku/3.3-huan-cun-chuan-tou.md)
-  * [参考资料](qi-ta/can-kao-zi-liao.md)
+    * [3.3 缓存穿透、雪崩](qi-ta/3.-redis-shu-ju-ku/3.3-huan-cun-chuan-tou.md)
+    * [3.4 布隆过滤器](qi-ta/3.-redis-shu-ju-ku/3.4-bu-long-guo-lv-qi.md)
+    * [3.5 为什么单线程](qi-ta/3.-redis-shu-ju-ku/3.5.md)
   * [4. 设计模式](qi-ta/4.-she-ji-mo-shi/README.md)
     * [4.1 代理模式](qi-ta/4.-she-ji-mo-shi/4.1-dai-li-mo-shi.md)
+  * [参考资料](qi-ta/can-kao-zi-liao.md)
 
