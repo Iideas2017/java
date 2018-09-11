@@ -109,5 +109,6 @@
     * [3.5 为什么单线程](qi-ta/3.-redis-shu-ju-ku/3.5.md)
   * [4. 设计模式](qi-ta/4.-she-ji-mo-shi/README.md)
     * [4.1 代理模式](qi-ta/4.-she-ji-mo-shi/4.1-dai-li-mo-shi.md)
+    * [4.2 工厂模式](qi-ta/4.-she-ji-mo-shi/4.2-gong-chang-mo-shi.md)
   * [参考资料](qi-ta/can-kao-zi-liao.md)
 

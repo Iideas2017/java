@@ -2,7 +2,7 @@
 
 ## 1. concurrent包的结构层次
 
-![concurrent&#x76EE;&#x5F55;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%2898%29.png)
+![concurrent&#x76EE;&#x5F55;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%28100%29.png)
 
 ![concurrent&#x5305;&#x5B9E;&#x73B0;&#x6574;&#x4F53;&#x793A;&#x610F;&#x56FE;](../../.gitbook/assets/image%20%2830%29.png)
 
