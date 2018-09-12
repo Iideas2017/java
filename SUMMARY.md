@@ -122,5 +122,7 @@
   * [4. 设计模式](qi-ta/4.-she-ji-mo-shi/README.md)
     * [4.1 代理模式](qi-ta/4.-she-ji-mo-shi/4.1-dai-li-mo-shi.md)
     * [4.2 工厂模式](qi-ta/4.-she-ji-mo-shi/4.2-gong-chang-mo-shi.md)
+    * [4.3 策略模式](qi-ta/4.-she-ji-mo-shi/4.3-ce-lve-mo-shi.md)
+    * [4.24 委派模式](qi-ta/4.-she-ji-mo-shi/4.24-wei-pai-mo-shi.md)
   * [参考资料](qi-ta/can-kao-zi-liao.md)
 
