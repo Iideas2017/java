@@ -16,3 +16,5 @@
 
 {% embed data="{\"url\":\"https://www.cnblogs.com/tech-bird/p/3525336.html\",\"type\":\"link\",\"title\":\"java中的反射 - 飞鸟快跑 - 博客园\",\"description\":\"主要介绍以下几方面内容理解 Class 类理解 Java 的类加载机制学会使用 ClassLoader 进行类加载理解反射的机制掌握 Constructor、Method、Field 类的用法理解并掌\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://www.cnblogs.com/ITtangtang/p/3978349.html\#a5\",\"type\":\"link\",\"title\":\"Spring：源码解读Spring IOC原理 - ^\_TONY\_^ - 博客园\",\"description\":\"SpringIOC设计原理解析:本文乃学习整理参考而来一、什么是Ioc/DI？ 二、SpringIOC体系结构 \(1\)BeanFactory \(2\)BeanDefinition 三、IoC容器的初始化\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
+
