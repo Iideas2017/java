@@ -32,3 +32,11 @@
 
 {% embed data="{\"url\":\"https://blog.csdn.net/liu136313/article/details/50520993\",\"type\":\"link\",\"title\":\"Redis与Reactor模式 - CSDN博客\",\"description\":\"最近看了Redis的设计与实现，这本书写的还不错，看完后对Redis的理解有很大的帮助。另外，作者整理了一份Redis源码注释，大家可以clone下来阅读。 Redis是开源的缓存数据库，由于其高性能而受到大家的欢迎。同时，它的代码量只有6w多行，相比起mysql动则上百万行的代码量，实现比较简单。 Redis中有很多方面都很有意思，在这篇文章中我想探讨的是Redis中的Reactor模式。\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://blog.csdn.net/sunnycoco05/article/details/78845878\",\"type\":\"link\",\"title\":\"JDK、CGLIB、Spring三种实现代理的区别（一）JDK Proxy 解析基于Java 8 - CSDN博客\",\"description\":\"Java中从1.3中引入Proxy，实现接口的动态代理。JDK的动态代理，就是在程序运行的过程中，根据被代理的接口来动态生成代理类的class文件，并加载运行的过程。本文从简单例子入手，通过分析源码看看其内部实现原理，使用的是JDK 1.8。    简单运用  使用动态代理主要涉及接口InvocationHandler，以及Proxy类。  通过动态代理实现对接口中方法调用前后进行拦截处理  创建...\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"http://www.cnblogs.com/xiaoluo501395377/p/3383130.html\",\"type\":\"link\",\"title\":\"java的动态代理机制详解 - xiaoluo501395377 - 博客园\",\"description\":\"本篇随笔详细的讲解了java中的动态代理机制，这个知识点非常非常的重要，包括我们Spring的AOP其就是通过动态代理的机制实现的，所以我们必须要好好的理解动态代理的机制。\",\"icon\":{\"type\":\"icon\",\"url\":\"http://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://blog.csdn.net/u013851082/article/details/71739434\",\"type\":\"link\",\"title\":\"JDK动态代理的实现及原理 - CSDN博客\",\"description\":\"动态代理，听上去很高大上的技术，在Java里应用广泛，尤其是在hibernate和spring这两种框架里，在AOP，权限控制，事务管理等方面都有动态代理的实现。JDK本身有实现动态代理技术，但是略有限制，即被代理的类必须实现某个接口，否则无法使用JDK自带的动态代理，因此，如果不满足条件，就只能使用另一种更加灵活，功能更加强大的动态代理技术——  CGLIB。Spring里会自动在JDK的代理\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://www.cnblogs.com/gonjan-blog/p/6685611.html\",\"type\":\"link\",\"title\":\"java动态代理实现与原理详细分析 - Gonjian - 博客园\",\"description\":\"结合代理模式，分别实现了静态代理和动态代理，并根据实际的例子仔细分析了java中动态代理原理。\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
+
