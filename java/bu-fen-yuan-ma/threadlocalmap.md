@@ -32,7 +32,7 @@ static class Entry extends WeakReference<ThreadLocal<?>> {
 
 Entry是一个以ThreadLocal为key,Object为value的键值对，另外需要注意的是这里的**threadLocal是弱引用，因为Entry继承了WeakReference，在Entry的构造方法中，调用了super\(k\)方法就会将threadLocal实例包装成一个WeakReferenece。**到这里我们可以用一个图来理解下thread,threadLocal,threadLocalMap，Entry之间的关系：
 
-![ThreadLocal&#x5404;&#x5F15;&#x7528;&#x95F4;&#x7684;&#x5173;&#x7CFB;](../../.gitbook/assets/image%20%2878%29.png)
+![ThreadLocal&#x5404;&#x5F15;&#x7528;&#x95F4;&#x7684;&#x5173;&#x7CFB;](../../.gitbook/assets/image%20%2880%29.png)
 
 注意上图中的实线表示强引用，虚线表示弱引用。如图所示，每个线程实例中可以通过threadLocals获取到threadLocalMap，而threadLocalMap实际上就是一个以threadLocal实例为key，任意对象为value的Entry数组。当我们为threadLocal变量赋值，实际上就是以当前threadLocal实例为key，值为value的Entry往这个threadLocalMap中存放。需要注意的是**Entry中的key是弱引用，当threadLocal外部强引用被置为null\(`threadLocalInstance=null`\),那么系统 GC 的时候，根据可达性分析，这个threadLocal实例就没有任何一条链路能够引用到它，这个ThreadLocal势必会被回收，这样一来，ThreadLocalMap中就会出现key为null的Entry，就没有办法访问这些key为null的Entry的value，如果当前线程再迟迟不结束的话，这些key为null的Entry的value就会一直存在一条强引用链：Thread Ref -&gt; Thread -&gt; ThreaLocalMap -&gt; Entry -&gt; value永远无法回收，造成内存泄漏。**当然，如果当前thread运行结束，threadLocal，threadLocalMap,Entry没有引用链可达，在垃圾回收的时候都会被系统进行回收。在实际开发中，会使用**线程池**去维护线程的创建和复用，比如**固定大小的线程**池，线程为了复用是不会主动结束的，所以，threadLocal的内存泄漏问题。
 
