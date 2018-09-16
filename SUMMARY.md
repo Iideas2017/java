@@ -6,6 +6,8 @@
     * [常量和变量](java/1.-string/chang-liang-he-bian-liang.md)
     * [String 定义与基础](java/1.-string/string-ding-yi-yu-ji-chu.md)
     * [String 的不可变性](java/1.-string/string-de-bu-ke-bian-xing.md)
+    * [String 对象创建方式](java/1.-string/string-dui-xiang-chuang-jian-fang-shi.md)
+    * [字符串常量池](java/1.-string/zi-fu-chuan-chang-liang-chi.md)
     * [1.1 String 类](java/1.-string/string-lei.md)
     * [1.2 String源码](java/1.-string/string-yuan-ma-xue-xi.md)
     * [1.3 基本数据和引用数据](java/1.-string/untitled-1.md)
