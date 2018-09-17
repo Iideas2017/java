@@ -69,6 +69,7 @@
     * [Synchronized 关键字（上）](bing-fa-xiang-guan/ji-chu-zhi-shi/synchronized.md)
     * [1.6 final关键字](bing-fa-xiang-guan/ji-chu-zhi-shi/6.-final-guan-jian-zi.md)
   * [2. Lock相关](bing-fa-xiang-guan/lock-xiang-guan/README.md)
+    * [Lock和Sychronized](bing-fa-xiang-guan/lock-xiang-guan/lock-he-sychronized.md)
     * [2.1 Lock](bing-fa-xiang-guan/lock-xiang-guan/lock.md)
     * [2.2 AQS](bing-fa-xiang-guan/lock-xiang-guan/aqs.md)
     * [2.3 ReentrantLock](bing-fa-xiang-guan/lock-xiang-guan/reentrantlock.md)
