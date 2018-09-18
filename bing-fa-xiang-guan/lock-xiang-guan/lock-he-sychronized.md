@@ -1,4 +1,4 @@
-# Lock和Sychronized
+# 2.2 Lock和Sychronized
 
 ## 1. Lock的优点
 

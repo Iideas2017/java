@@ -2,7 +2,7 @@
 description: 运行速度快慢为：StringBuilder > StringBuffer > String
 ---
 
-# String、StringBuilder 和 StringBuffer
+# 2.5 String、StringBuilder 和 StringBuffer
 
 ## **1. String 与 StringBuilder**
 

@@ -1,4 +1,4 @@
-# 2.4 ReentrantReadWriteLock
+# 2.5 ReentrantReadWriteLock
 
 ## 1.读写锁的介绍
 
@@ -14,7 +14,7 @@
 
        在同一时刻写锁是不能被多个线程所获取，很显然写锁是独占式锁，而实现写锁的同步语义是通过重写AQS中的tryAcquire方法实现的。
 
-![](../../.gitbook/assets/image%20%28154%29.png)
+![](../../.gitbook/assets/image%20%28159%29.png)
 
  **当读锁已经被读线程获取或者写锁已经被其他写线程获取，则写锁获取失败；否则，获取成功并支持重入，增加写状态。**
 

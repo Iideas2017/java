@@ -2,7 +2,7 @@
 description: 'String源码：https://github.com/Iideas2017/java/blob/master/String.java'
 ---
 
-# 1.2 String源码
+# 2.8 String源码
 
 ### 1. 类间关系：
 

@@ -1,4 +1,4 @@
-# 2.3 ReentrantLock
+# 2.4 ReentrantLock
 
 ##  1. ReentrantLock的介绍
 

@@ -2,7 +2,7 @@
 description: 字符串常量池、class常量池和运行时常量池
 ---
 
-# Java中的常量池
+# 2.4 Java中的常量池
 
 ### **1.字符串常量池\(String Constant Pool\):**
 
