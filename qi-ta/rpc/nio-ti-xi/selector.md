@@ -1,4 +1,4 @@
-# Selector
+# 4. Selector
 
        之前进行socket编程时，accept方法会一直**阻塞**，直到有客户端请求的到来，并返回socket进行相应的处理。整个过程是流水线的，处理完一个请求，才能去获取并处理后面的请求，当然也可以把获取socket和处理socket的过程分开，一个线程负责accept，一个线程池负责处理请求。
 
@@ -10,7 +10,7 @@
 
 在这里，这个人就相当Selector，每个鸡笼相当于一个SocketChannel，每个线程通过一个Selector可以管理多个SocketChannel。
 
-![](../../.gitbook/assets/image%20%2852%29.png)
+![](../../../.gitbook/assets/image%20%2862%29.png)
 
 1、**connect**：客户端连接服务端事件，对应值为SelectionKey.OP\_CONNECT\(8\)  
  2、**accept**：服务端接收客户端连接事件，对应值为SelectionKey.OP\_ACCEPT\(16\)  
@@ -119,9 +119,9 @@ WindowsSelectorImpl(SelectorProvider sp) throws IOException {
 
 **pollWrapper**用Unsafe类申请一块物理内存pollfd，存放socket句柄fdVal和events，其中pollfd共8位，0-3位保存socket句柄，4-7位保存events。
 
-![](../../.gitbook/assets/image%20%2874%29.png)
+![](../../../.gitbook/assets/image%20%2890%29.png)
 
-![](../../.gitbook/assets/image%20%2842%29.png)
+![](../../../.gitbook/assets/image%20%2851%29.png)
 
 ollWrapper提供了fdVal和event数据的相应操作，如添加操作通过Unsafe的putInt和putShort实现。
 
