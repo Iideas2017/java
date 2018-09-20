@@ -105,6 +105,7 @@
     * [1.6 希尔排序](suan-fa-ji-chu/1.-qi-da-pai-xu-suan-fa/1.6-xi-er-pai-xu.md)
     * [1.7 归并排序](suan-fa-ji-chu/1.-qi-da-pai-xu-suan-fa/1.7-gui-bing-pai-xu.md)
   * [2 二叉树](suan-fa-ji-chu/2.-er-cha-shu.md)
+  * [1. 树的遍历](suan-fa-ji-chu/1.-shu-de-bian-li.md)
   * [3. Hash](suan-fa-ji-chu/3.-hash.md)
   * [常见算法题](suan-fa-ji-chu/chang-jian-suan-fa-ti.md)
   * [参考资料](suan-fa-ji-chu/can-kao-zi-liao.md)
