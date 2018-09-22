@@ -27,7 +27,7 @@ explain select * from user2 where username = '1' and password = '1';
 explain select * from user2 where password = '1';
 ```
 
-![](../../.gitbook/assets/image%20%28153%29.png)
+![](../../.gitbook/assets/image%20%28154%29.png)
 
  当有username，但顺序乱序时也可以使用索引：
 
@@ -35,7 +35,7 @@ explain select * from user2 where password = '1';
 explain select * from user2 where password = '1' and username = '1';
 ```
 
-![](../../.gitbook/assets/image%20%28200%29.png)
+![](../../.gitbook/assets/image%20%28202%29.png)
 
 观察上述两个explain结果中的type字段。查询中分别是：
 

@@ -164,6 +164,7 @@
     * [2.2 RPC和消息队列](qi-ta/2.-xiao-xi-dui-lie/2.2-rpc-he-xiao-xi-dui-lie.md)
     * [2.3 ActiveMq](qi-ta/2.-xiao-xi-dui-lie/2.3-activemq.md)
     * [2.4 推拉模式](qi-ta/2.-xiao-xi-dui-lie/2.4.md)
+    * [2.5 ActiveMQ消息传送机制](qi-ta/2.-xiao-xi-dui-lie/2.5-activemq-xiao-xi-chuan-song-ji-zhi.md)
     * [参考资料](qi-ta/2.-xiao-xi-dui-lie/can-kao-zi-liao.md)
   * [3. Redis 数据库](qi-ta/3.-redis-shu-ju-ku/README.md)
     * [3.1 Unix网络编程5种I/O模型](qi-ta/3.-redis-shu-ju-ku/3.1-unix-wang-luo-bian-cheng-5-zhong-io-mo-xing.md)

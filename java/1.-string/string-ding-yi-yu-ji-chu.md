@@ -2,7 +2,7 @@
 
 ## 1. String 的声明
 
-![](../../.gitbook/assets/image%20%28243%29.png)
+![](../../.gitbook/assets/image%20%28245%29.png)
 
 由 JDK 中关于String的声明可以知道：
 

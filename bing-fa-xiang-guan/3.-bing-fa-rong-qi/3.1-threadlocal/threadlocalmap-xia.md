@@ -4,7 +4,7 @@
 
 threadLocal是为了解决**对象不能被多线程共享访问**的问题，通过threadLocal.set方法将对象实例保存在每个线程自己所拥有的threadLocalMap中，这样每个线程使用自己的对象实例，彼此不会影响达到隔离的作用，从而就解决了对象在被共享访问带来线程安全问题。如果将同步机制和threadLocal做一个横向比较的话，同步机制就是通过控制线程访问共享对象的顺序，而threadLocal就是为每一个线程分配一个该对象，各用各的互不影响。打个比方说，现在有100个同学需要填写一张表格但是只有一支笔，同步就相当于A使用完这支笔后给B，B使用后给C用......老师就控制着这支笔的使用顺序，使得同学之间不会产生冲突。而threadLocal就相当于，老师直接准备了100支笔，这样每个同学都使用自己的，同学之间就不会产生冲突。很显然这就是两种不同的思路，同步机制以“**时间换空间**”，由于每个线程在同一时刻共享对象只能被一个线程访问造成整体上响应时间增加，但是对象只占有一份内存，牺牲了时间效率换来了空间效率即“**时间换空间**”。而threadLocal，为每个线程都分配了一份对象，自然而然内存使用率增加，每个线程各用各的，整体上时间效率要增加很多，牺牲了空间效率换来时间效率即“**空间换时间**”。
 
-![threadLocal&#x5F15;&#x7528;&#x793A;&#x610F;&#x56FE;](../../../.gitbook/assets/image%20%28229%29.png)
+![threadLocal&#x5F15;&#x7528;&#x793A;&#x610F;&#x56FE;](../../../.gitbook/assets/image%20%28231%29.png)
 
 上图中，实线代表强引用，虚线代表的是弱引用，如果threadLocal外部强引用被置为null\(threadLocalInstance=null\)的话，threadLocal实例就没有一条引用链路可达，很显然在gc\(垃圾回收\)的时候势必会被回收，因此entry就存在key为null的情况，无法通过一个Key为null去访问到该entry的value。同时，就存在了这样一条引用链：**threadRef-&gt;currentThread-&gt;threadLocalMap-&gt;entry-&gt;valueRef-&gt;valueMemory**,导致在垃圾回收的时候进行可达性分析的时候,value可达从而不会被回收掉，但是该value永远不能被访问到，这样就存在了**内存泄漏**。当然，如果线程执行结束后，threadLocal，threadRef会断掉，因此threadLocal,threadLocalMap，entry都会被回收掉。可是，在实际使用中我们都是会用线程池去维护我们的线程，比如在Executors.newFixedThreadPool\(\)时创建线程的时候，为了复用线程是不会结束的，所以threadLocal内存泄漏就值得我们关注。
 
