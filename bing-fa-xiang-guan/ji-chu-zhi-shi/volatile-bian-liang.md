@@ -27,7 +27,7 @@
 
 ![&#x5185;&#x5B58;&#x5C4F;&#x969C;&#x5206;&#x7C7B;&#x8868;](../../.gitbook/assets/image%20%2840%29.png)
 
-![volatile&#x91CD;&#x6392;&#x5E8F;&#x89C4;&#x5219;&#x8868;](../../.gitbook/assets/image%20%2892%29.png)
+![volatile&#x91CD;&#x6392;&#x5E8F;&#x89C4;&#x5219;&#x8868;](../../.gitbook/assets/image%20%2894%29.png)
 
 保守策略：
 
