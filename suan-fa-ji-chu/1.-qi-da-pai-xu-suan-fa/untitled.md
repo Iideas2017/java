@@ -69,7 +69,7 @@ key是整段序列最后一个，right是key前一个位置，如果array\[right
 4. right一直向前走，直到找到一个小于key的值，然后将该数放入坑中，坑位变成了array\[right\]。
 5. 重复3和4的步骤，直到left和right相遇，然后将key放入最后一个坑位。
 
-![](../../.gitbook/assets/image%20%28188%29.png)
+![](../../.gitbook/assets/image%20%28199%29.png)
 
  当left &gt;= right时，将key放入最后一个坑，就完成了一次排序。   
 注意，left走的时候right是不动的，反之亦然。因为left先走，所有最后一个坑肯定在array\[right\]。
@@ -104,7 +104,7 @@ int PartSort(int[] array,int left,int right)
 
 通俗一点就是，在没找到大于key值前，pre永远紧跟cur，遇到大的两者之间机会拉开差距，中间差的肯定是连续的大于key的值，当再次遇到小于key的值时，交换两个下标对应的值就好了。
 
-![](../../.gitbook/assets/image%20%28149%29.png)
+![](../../.gitbook/assets/image%20%28156%29.png)
 
 ```java
 int PartSort(int* array,int left,int right)
