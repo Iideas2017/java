@@ -16,7 +16,7 @@
 
        **状态的更新使用getState, setState 以及compareAndSetState 这三个方法**。
 
-![AQS&#x53EF;&#x91CD;&#x5199;&#x7684;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%28169%29.png)
+![AQS&#x53EF;&#x91CD;&#x5199;&#x7684;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%28170%29.png)
 
 ![AQS&#x63D0;&#x4F9B;&#x7684;&#x6A21;&#x677F;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%2893%29.png)
 

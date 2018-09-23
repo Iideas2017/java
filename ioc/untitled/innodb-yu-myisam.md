@@ -8,7 +8,7 @@ MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是数�
 
 下图是MyISAM主键索引的原理图： 
 
-![MyISAM&#x4E3B;&#x952E;&#x7D22;&#x5F15;](../../.gitbook/assets/image%20%28189%29.png)
+![MyISAM&#x4E3B;&#x952E;&#x7D22;&#x5F15;](../../.gitbook/assets/image%20%28190%29.png)
 
  可以看出MyISAM的索引文件仅仅保存数据记录的地址。
 

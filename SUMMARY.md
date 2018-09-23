@@ -199,6 +199,7 @@
     * [4.3 策略模式](qi-ta/4.-she-ji-mo-shi/4.3-ce-lve-mo-shi.md)
     * [4.4 享元模式](qi-ta/4.-she-ji-mo-shi/4.4-xiang-yuan-mo-shi.md)
     * [4.5 观察者模式](qi-ta/4.-she-ji-mo-shi/4.5-guan-cha-zhe-mo-shi.md)
+    * [4.6 模板方法](qi-ta/4.-she-ji-mo-shi/4.6-mo-ban-fang-fa.md)
     * [4.24 委派模式](qi-ta/4.-she-ji-mo-shi/4.24-wei-pai-mo-shi.md)
   * [参考资料](qi-ta/can-kao-zi-liao.md)
 * [5. 负载均衡](5.-fu-zai-jun-heng/README.md)

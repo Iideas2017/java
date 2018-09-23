@@ -35,7 +35,7 @@ explain select * from user2 where password = '1';
 explain select * from user2 where password = '1' and username = '1';
 ```
 
-![](../../.gitbook/assets/image%20%28213%29.png)
+![](../../.gitbook/assets/image%20%28214%29.png)
 
 观察上述两个explain结果中的type字段。查询中分别是：
 

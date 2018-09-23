@@ -80,7 +80,7 @@ public class Client {
 
 ## 4. 登记形式的原型模式
 
-![](../../../.gitbook/assets/image%20%28219%29.png)
+![](../../../.gitbook/assets/image%20%28220%29.png)
 
 作为原型模式的第二种形式，它多了一个**原型管理器**\(PrototypeManager\)角色，该角色的作用是：创建具体原型类的对象，并记录每一个被创建的对象。
 
