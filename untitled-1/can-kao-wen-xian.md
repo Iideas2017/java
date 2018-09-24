@@ -18,3 +18,5 @@
 
 {% embed data="{\"url\":\"https://www.cnblogs.com/ITtangtang/p/3978349.html\#a5\",\"type\":\"link\",\"title\":\"Spring：源码解读Spring IOC原理 - ^\_TONY\_^ - 博客园\",\"description\":\"SpringIOC设计原理解析:本文乃学习整理参考而来一、什么是Ioc/DI？ 二、SpringIOC体系结构 \(1\)BeanFactory \(2\)BeanDefinition 三、IoC容器的初始化\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://www.cnblogs.com/kenshinobiy/p/4652008.html\",\"type\":\"link\",\"title\":\"JAVA面试题：Spring中bean的生命周期 - 谦信君 - 博客园\",\"description\":\"Spring 中bean 的生命周期短暂吗?在spring中，从BeanFactory或ApplicationContext取得的实例为Singleton，也就是预设为每一个Bean的别名只能维持一个\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
+
