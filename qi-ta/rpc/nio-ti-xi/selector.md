@@ -10,7 +10,7 @@
 
 在这里，这个人就相当Selector，每个鸡笼相当于一个SocketChannel，每个线程通过一个Selector可以管理多个SocketChannel。
 
-![](../../../.gitbook/assets/image%20%2877%29.png)
+![](../../../.gitbook/assets/image%20%2878%29.png)
 
 1、**connect**：客户端连接服务端事件，对应值为SelectionKey.OP\_CONNECT\(8\)  
  2、**accept**：服务端接收客户端连接事件，对应值为SelectionKey.OP\_ACCEPT\(16\)  
@@ -119,9 +119,9 @@ WindowsSelectorImpl(SelectorProvider sp) throws IOException {
 
 **pollWrapper**用Unsafe类申请一块物理内存pollfd，存放socket句柄fdVal和events，其中pollfd共8位，0-3位保存socket句柄，4-7位保存events。
 
-![](../../../.gitbook/assets/image%20%28111%29.png)
+![](../../../.gitbook/assets/image%20%28113%29.png)
 
-![](../../../.gitbook/assets/image%20%2862%29.png)
+![](../../../.gitbook/assets/image%20%2863%29.png)
 
 ollWrapper提供了fdVal和event数据的相应操作，如添加操作通过Unsafe的putInt和putShort实现。
 

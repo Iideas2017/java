@@ -26,6 +26,7 @@
       * [ArrayList、Vector、LinkedList 的区别](java/ji-he-xiang-guan/2.2-list/arraylistvectorlinkedlist-de-qu-bie.md)
     * [2.3 Map](java/ji-he-xiang-guan/2.3-map-1/README.md)
       * [1. HashMap](java/ji-he-xiang-guan/2.3-map-1/2.3-map.md)
+      * [2.CocurrentHashMap](java/ji-he-xiang-guan/2.3-map-1/2.cocurrenthashmap.md)
     * [Fail fast 机制](java/ji-he-xiang-guan/fail-fast-ji-zhi.md)
   * [参考资料](java/can-kao-zi-liao-1.md)
   * [部分源码](java/bu-fen-yuan-ma/README.md)
