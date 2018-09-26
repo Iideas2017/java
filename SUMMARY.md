@@ -152,7 +152,7 @@
   * [3. 体系结构](ji-suan-ji-wang-luo/3.-ti-xi-jie-gou/README.md)
     * [3.1 概述](ji-suan-ji-wang-luo/3.-ti-xi-jie-gou/3.1-gai-shu.md)
     * [3.2 TCP/IP 体系结构](ji-suan-ji-wang-luo/3.-ti-xi-jie-gou/3.2-tcpip-ti-xi-jie-gou.md)
-* [参考资料](can-kao-zi-liao.md)
+  * [参考资料](ji-suan-ji-wang-luo/can-kao-zi-liao.md)
 * [8. 算法基础](suan-fa-ji-chu/README.md)
   * [1 排序算法](suan-fa-ji-chu/1.-qi-da-pai-xu-suan-fa/README.md)
     * [1.1 冒泡排序](suan-fa-ji-chu/1.-qi-da-pai-xu-suan-fa/1.-mao-pao-pai-xu.md)

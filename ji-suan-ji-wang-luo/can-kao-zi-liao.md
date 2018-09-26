@@ -4,3 +4,5 @@
 
 {% embed data="{\"url\":\"https://www.cnblogs.com/gaopeng527/p/5255757.html\",\"type\":\"link\",\"title\":\"TCP流量控制与拥塞控制 - ~风轻云淡~ - 博客园\",\"description\":\"TCP 的流量控制与拥塞控制可以说是一体的。流量控制是通过滑动窗口实现的，拥塞避免主要包含以下2个内容： （1）慢开始，拥塞避免 （2）快重传，快恢复 1.流量控制——滑动窗口 TCP采用大小可变的滑\",\"icon\":{\"type\":\"icon\",\"url\":\"https://www.cnblogs.com/favicon.ico\",\"aspectRatio\":0}}" %}
 
+
+
