@@ -223,4 +223,12 @@
     * [5.6 负载均衡算法](qi-ta/5.-fu-zai-jun-heng/2.-fu-zai-jun-heng-suan-fa.md)
     * [参考资料](qi-ta/5.-fu-zai-jun-heng/can-kao-zi-liao.md)
   * [参考资料](qi-ta/can-kao-zi-liao.md)
+* [操作系统](cao-zuo-xi-tong.md)
+* [1.死锁](1.-si-suo.md)
+* [1. 基础](1.-ji-chu.md)
+* [计算机网络](ji-suan-ji-wang-luo.md)
+* [TCP 连接](tcp-lian-jie.md)
+* [TCP 的拥塞控制](tcp-de-yong-sai-kong-zhi.md)
+* [HTTP协议](http-xie-yi.md)
+* [参考资料](can-kao-zi-liao.md)
 
