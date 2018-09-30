@@ -13,17 +13,13 @@
 #### a. ArrayList发生fail-fast例子：
 
 ```javascript
-     public static void main(String[] args) {
-           List<String> list = new ArrayList<>();
-           for (int i = 0 ; i < 10 ; i++ ) {
-                list.add(i + "");
-           }
+public static void main(String[] args) {
+      List<String> list = new ArrayList<>();
+         for (int i = 0 ; i < 10 ; i++ ) {  list.add(i + ""); }
            Iterator<String> iterator = list.iterator();
            int i = 0 ;
            while(iterator.hasNext()) {
-                if (i == 3) {
-                     list.remove(3);
-                }
+                if (i == 3) { list.remove(3); }
                 System.out.println(iterator.next());
                 i ++;
            }
@@ -32,7 +28,7 @@
 
 该段代码定义了一个Arraylist集合，并使用迭代器遍历，**在遍历过程中，刻意在某一步迭代中remove一个元素，这个时候，就会发生fail-fast**。
 
-![](../../.gitbook/assets/image%20%28298%29.png)
+![](../../.gitbook/assets/image%20%28299%29.png)
 
 ####  b. HashMap发生fail-fast：
 
@@ -57,7 +53,7 @@
 
  该段代码定义了一个hashmap对象并存放了10个键值对，在迭代遍历过程中，使用map的remove方法移除了一个元素，导致抛出了ConcurrentModificationException异常：
 
-![](../../.gitbook/assets/image%20%28280%29.png)
+![](../../.gitbook/assets/image%20%28281%29.png)
 
 ###  **2、多线程环境下：**
 
@@ -118,7 +114,7 @@ public class FailFastTest {
 
 启动两个线程，分别对其中一个对list进行迭代，另一个在线程1的迭代过程中去remove一个元素，结果也是抛出了java.util.ConcurrentModificationException
 
-![](../../.gitbook/assets/image%20%28199%29.png)
+![](../../.gitbook/assets/image%20%28200%29.png)
 
 ## **3. fail-fast的原理**
 

@@ -25,7 +25,7 @@ spring事务定义了7种传播行为，传播行为有什么作用？在什么�
 
 Spring的TransactionDefinition类中定义了7中事务传播类型，代码如下：
 
-![](../../.gitbook/assets/image%20%2894%29.png)
+![](../../.gitbook/assets/image%20%2895%29.png)
 
 我们先来假设一个场景  
  在 ServiceA 中方法 A\(\) 调用 ServiceB 中方法 B\(\)。  

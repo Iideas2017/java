@@ -8,3 +8,7 @@
 
 {% embed data="{\"url\":\"https://blog.csdn.net/baiye\_xing/article/details/73123753\",\"type\":\"link\",\"title\":\"【NIO引入】BIO、AIO与NIO的区别 - CSDN博客\",\"description\":\"同步异步与阻塞非阻塞的区别1.同步例：买饭：自己亲自去饭馆买饭，这就是同步（自己处理IO读写）2.异步例：买饭：叫外卖送到家，这就是异步（IO读写委托给OS处理，需要将数据缓冲区地址和大小传给OS\(饭名和地址\)，OS需要支持异步IO操作API）3.阻塞例：办理业务：一直排队等待（调用会一直阻塞到读写完成才返回）4.非阻塞例：办理业务：抽号后就可以做其他事，如果你等不急，可以去问工作人员到你了没，如果\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
 
+{% embed data="{\"url\":\"https://blog.csdn.net/zymx14/article/details/78394464\",\"type\":\"link\",\"title\":\"java中的fail-fast\(快速失败\)机制 - CSDN博客\",\"description\":\"引入 在前面介绍ArrayList的扩容问题时对于modCount的操作没有详细说明，该变量的操作在add，remove等操作中都会发生改变。那么该变量到底有什么作用呢？ 简介 fail-fast 机制，即快速失败机制，是java集合\(Collection\)中的一种错误检测机制。当在迭代集合的过程中该集合在结构上发生改变的时候，就有可能会发生fail-fast，即抛出ConcurrentMo\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+
+{% embed data="{\"url\":\"https://blog.csdn.net/caimengyuan/article/details/61204542\",\"type\":\"link\",\"title\":\"关于HashMap的一些按位与计算的问题 - CSDN博客\",\"description\":\"关于HashMap的一些按位与计算的问题，HashMap.hash\(\)\",\"icon\":{\"type\":\"icon\",\"url\":\"https://csdnimg.cn/public/favicon.ico\",\"aspectRatio\":0}}" %}
+

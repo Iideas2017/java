@@ -6,7 +6,7 @@
 
 ### **\(1\). Object 中的 clone\(\) 方法**
 
-![](../../.gitbook/assets/image%20%28159%29.png)
+![](../../.gitbook/assets/image%20%28160%29.png)
 
         在使用clone\(\)方法时，若该类未实现 Cloneable 接口，则抛出 java.lang.CloneNotSupportedException 异常。下面我们以Employee这个例子进行说明：
 
