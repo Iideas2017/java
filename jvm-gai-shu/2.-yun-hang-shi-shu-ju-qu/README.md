@@ -1,0 +1,78 @@
+# 2. 运行时数据区
+
+The 运行时数据区域被划分为5个主要组件：
+
+### **2.1 方法区（Method Area）**
+
+所有**类级别数据**将被存储在这里，包括**静态变量**。每个JVM只有一个方法区，它是一个共享的资源。
+
+### **2.2 堆区（Heap Area）**
+
+所有的**对象**和它们相应的**实例变量**以及**数组**将被存储在这里。每个JVM同样只有一个堆区。由于**方法区**和**堆区**的内存由多个线程共享，所以存储的数据**不是线程安全的**。
+
+### **2.3 栈区（Stack Area）**
+
+对每个线程会单独创建一个**运行时栈**。对每个**函数呼叫**会在栈内存生成一个**栈帧\(Stack Frame\)**。所有的**局部变量**将在栈内存中创建。栈区是线程安全的，因为它不是一个共享资源。栈帧被分为三个子实体：
+
+**a 局部变量数组** – 包含多少个与方法相关的**局部变量**并且相应的值将被存储在这里。
+
+**b 操作数栈** – 如果需要执行任何中间操作，**操作数栈**作为运行时工作区去执行指令。
+
+**c 帧数据** – 方法的所有符号都保存在这里。在任意**异常**的情况下，catch块的信息将会被保存在帧数据里面。
+
+### **2.4 PC寄存器**
+
+每个线程都有一个单独的**PC寄存器**来保存**当前执行指令**的地址，一旦该指令被执行，pc寄存器会被**更新**至下条指令的地址。
+
+### **2.5 本地方法栈**
+
+本地方法栈保存本地方法信息。对每一个线程，将创建一个单独的本地方法栈。
+
+![&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#x533A;](../../.gitbook/assets/image%20%28136%29.png)
+
+```java
+package com.spark.jvm;
+/**
+ * 从JVM调用的角度分析java程序堆内存空间的使用：
+ * 当JVM进程启动的时候，会从类加载路径中找到包含main方法的入口类HelloJVM
+ * 找到HelloJVM会直接读取该文件中的二进制数据，并且把该类的信息放到运行时的Method内存区域中。
+ * 然后会定位到HelloJVM中的main方法的字节码中，并开始执行Main方法中的指令
+ * 此时会创建Student实例对象，并且使用student来引用该对象（或者说给该对象命名），其内幕如下：
+ * 第一步：JVM会直接到Method区域中去查找Student类的信息，此时发现没有Student类，就通过类加载器加载该Student类文件；
+ * 第二步：在JVM的Method区域中加载并找到了Student类之后会在Heap区域中为Student实例对象分配内存，
+ * 并且在Student的实例对象中持有指向方法区域中的Student类的引用（内存地址）；
+ * 第三步：JVM实例化完成后会在当前线程中为Stack中的reference建立实际的应用关系，此时会赋值给student
+ * 接下来就是调用方法
+ * 在JVM中方法的调用一定是属于线程的行为，也就是说方法调用本身会发生在线程的方法调用栈：
+ * 线程的方法调用栈（Method Stack Frames），每一个方法的调用就是方法调用栈中的一个Frame，
+ * 该Frame包含了方法的参数，局部变量，临时数据等 student.sayHello();
+ */
+public class HelloJVM {
+	//在JVM运行的时候会通过反射的方式到Method区域找到入口方法main
+	public static void main(String[] args) {//main方法也是放在Method方法区域中的
+		/**
+		 * student(小写的)是放在主线程中的Stack区域中的
+		 * Student对象实例是放在所有线程共享的Heap区域中的
+		 */
+		Student student = new Student("spark");
+		/**
+		 * 首先会通过student指针（或句柄）（指针就直接指向堆中的对象，句柄表明有一个中间的,student指向句柄，句柄指向对象）
+		 * 找Student对象，当找到该对象后会通过对象内部指向方法区域中的指针来调用具体的方法去执行任务
+		 */
+		student.sayHello();
+	}
+}
+ 
+class Student {
+	// name本身作为成员是放在stack区域的但是name指向的String对象是放在Heap中
+	private String name;
+	public Student(String name) {
+		this.name = name;
+	}
+	//sayHello这个方法是放在方法区中的
+	public void sayHello() {
+	System.out.println("Hello, this is " + this.name);
+	}
+}
+```
+
