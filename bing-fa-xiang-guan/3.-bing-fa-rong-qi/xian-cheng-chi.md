@@ -12,7 +12,7 @@
 
 当一个并发任务提交给线程池，线程池分配线程去执行任务的过程如下图所示：
 
-![&#x7EBF;&#x7A0B;&#x6C60;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x56FE;](../../.gitbook/assets/image%20%2849%29.png)
+![&#x7EBF;&#x7A0B;&#x6C60;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x56FE;](../../.gitbook/assets/image%20%2851%29.png)
 
 从图可以看出，**线程池**执行所提交的任务过程主要有这样几个阶段：
 
@@ -78,7 +78,7 @@ public void execute(Runnable command) {
 }
 ```
 
-![](../../.gitbook/assets/image%20%2828%29.png)
+![](../../.gitbook/assets/image%20%2830%29.png)
 
 execute方法执行逻辑有这样几种情况：
 

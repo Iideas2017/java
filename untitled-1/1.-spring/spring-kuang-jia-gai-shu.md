@@ -28,7 +28,7 @@ Spring可以使用POJO（普通的Java对象，plain old java objects）创建�
 
 **面向切面Aop：**Spring提供了面向切面编程的丰富支持，允许通过分离应用的业务逻辑与系统级服务（例如审计（auditing）和事务（transaction）管理）进行**内聚性**的开发。应用对象只实现它们应该做的——完成业务逻辑——仅此而已。它们并不负责（甚至是意识）其它的系统级关注点，例如**日志或事务**支持。
 
-![Spring FrameWork](../../.gitbook/assets/image%20%28336%29.png)
+![Spring FrameWork](../../.gitbook/assets/image%20%28349%29.png)
 
 **容器：**Spring包含并管理应用对象的配置和生命周期，在这个意义上它是一种容器，你可以配置你的每个bean如何被创建——基于一个可配置原型（prototype），你的bean可以创建一个单独的实例或者每次需要时都生成一个新的实例——以及它们是如何相互关联的。然而，Spring不应该被混同于传统的重量级的EJB容器，它们经常是庞大与笨重的，难以使用。
 
@@ -40,7 +40,7 @@ Spring可以使用POJO（普通的Java对象，plain old java objects）创建�
 
 Spring 框架是一个分层架构，由 7 个定义良好的模块组成。Spring 模块构建在核心容器之上，核心容器定义了创建、配置和管理 bean 的方式。
 
-![Spring&#x7EC4;&#x6210;](../../.gitbook/assets/image%20%28238%29.png)
+![Spring&#x7EC4;&#x6210;](../../.gitbook/assets/image%20%28246%29.png)
 
 组成 Spring 框架的每个模块（或组件）都可以单独存在，或者与其他一个或多个模块联合实现。每个模块的功能如下：
 
@@ -54,7 +54,7 @@ Spring 框架是一个分层架构，由 7 个定义良好的模块组成。Spri
 
 ## 4. Jar 包介绍
 
-![](../../.gitbook/assets/image%20%28183%29.png)
+![](../../.gitbook/assets/image%20%28188%29.png)
 
  core部分包含5个模块
 
@@ -64,5 +64,5 @@ Spring 框架是一个分层架构，由 7 个定义良好的模块组成。Spri
 4. spring-context-support 
 5. spring-expression：spring表达式语言
 
-![](../../.gitbook/assets/image%20%28278%29.png)
+![](../../.gitbook/assets/image%20%28288%29.png)
 

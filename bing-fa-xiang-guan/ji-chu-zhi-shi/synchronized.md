@@ -97,7 +97,7 @@ public class InsertData {
 }
 ```
 
-![](../../.gitbook/assets/image%20%28244%29.png)
+![](../../.gitbook/assets/image%20%28253%29.png)
 
 
 
