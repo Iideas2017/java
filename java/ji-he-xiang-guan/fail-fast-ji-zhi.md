@@ -28,7 +28,7 @@ public static void main(String[] args) {
 
 该段代码定义了一个Arraylist集合，并使用迭代器遍历，**在遍历过程中，刻意在某一步迭代中remove一个元素，这个时候，就会发生fail-fast**。
 
-![](../../.gitbook/assets/image%20%28309%29.png)
+![](../../.gitbook/assets/image%20%28311%29.png)
 
 ####  b. HashMap发生fail-fast：
 
@@ -53,7 +53,7 @@ public static void main(String[] args) {
 
  该段代码定义了一个hashmap对象并存放了10个键值对，在迭代遍历过程中，使用map的remove方法移除了一个元素，导致抛出了ConcurrentModificationException异常：
 
-![](../../.gitbook/assets/image%20%28291%29.png)
+![](../../.gitbook/assets/image%20%28293%29.png)
 
 ###  **2、多线程环境下：**
 
@@ -114,7 +114,7 @@ public class FailFastTest {
 
 启动两个线程，分别对其中一个对list进行迭代，另一个在线程1的迭代过程中去remove一个元素，结果也是抛出了java.util.ConcurrentModificationException
 
-![](../../.gitbook/assets/image%20%28207%29.png)
+![](../../.gitbook/assets/image%20%28209%29.png)
 
 ## **3. fail-fast的原理**
 
