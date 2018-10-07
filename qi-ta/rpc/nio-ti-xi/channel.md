@@ -55,7 +55,7 @@ public int read(ByteBuffer dst) throws IOException {
 }
 ```
 
-FileChannelImpl的read方法通过IOUtil的read实现：
+FileChannelImpl的**read方法**通过IOUtil的read实现：
 
 ```java
 static int read(FileDescriptor fd, ByteBuffer dst, long position,
@@ -195,5 +195,5 @@ while (bytesRead != -1) {
 file.close();
 ```
 
-注意buffer.flip\(\) 的调用，首先将数据写入到buffer，然后变成读模式，再从buffer中读取数据。
+注意buffer.flip\(\) 的调用，首先**将数据写入到buffer，然后变成读模式，再从buffer中读取数据。**
 

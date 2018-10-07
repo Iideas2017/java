@@ -12,8 +12,8 @@
 
 ![](../../../.gitbook/assets/image%20%2889%29.png)
 
-1、**connect**：客户端连接服务端事件，对应值为SelectionKey.OP\_CONNECT\(8\)  
- 2、**accept**：服务端接收客户端连接事件，对应值为SelectionKey.OP\_ACCEPT\(16\)  
+ 1、**connect**：客户端连接服务端事件，对应值为SelectionKey.OP\_CONNECT\(8\)  
+ 2、**accept**： 服务端接收客户端连接事件，对应值为SelectionKey.OP\_ACCEPT\(16\)  
  3、**read**：    读事件，对应值为SelectionKey.OP\_READ\(1\)  
  4、**write**：   写事件，对应值为SelectionKey.OP\_WRITE\(4\)
 
