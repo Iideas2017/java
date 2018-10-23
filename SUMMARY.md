@@ -96,6 +96,7 @@
       * [1. ThreadLocalMap （上）](bing-fa-xiang-guan/3.-bing-fa-rong-qi/3.1-threadlocal/threadlocalmap.md)
       * [2. ThreadLocalMap （下）](bing-fa-xiang-guan/3.-bing-fa-rong-qi/3.1-threadlocal/threadlocalmap-xia.md)
     * [3.2 线程池](bing-fa-xiang-guan/3.-bing-fa-rong-qi/xian-cheng-chi.md)
+  * [4. 生产者消费者模型](bing-fa-xiang-guan/4.-sheng-chan-zhe-xiao-fei-zhe-mo-xing.md)
   * [参考资料](bing-fa-xiang-guan/can-kao-zi-liao.md)
 * [4. Spring](untitled-1/README.md)
   * [1. Spring](untitled-1/1.-spring/README.md)

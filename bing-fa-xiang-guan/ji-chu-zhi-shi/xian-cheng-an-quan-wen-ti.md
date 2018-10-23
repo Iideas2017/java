@@ -102,5 +102,5 @@ public class Test {
 
 　　**在 Java 中，提供了两种方式来实现同步互斥访问：synchronized 和 Lock。**
 
-###  {#三-synchronized-同步方法或者同步块}
+###  <a id="&#x4E09;-synchronized-&#x540C;&#x6B65;&#x65B9;&#x6CD5;&#x6216;&#x8005;&#x540C;&#x6B65;&#x5757;"></a>
 
