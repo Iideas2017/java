@@ -4,9 +4,11 @@
 
 ## 1. concurrent包的结构层次
 
-![concurrent&#x76EE;&#x5F55;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%28254%29.png)
+其中包含了两个子包：atomic以及lock，另外在concurrent下的阻塞队列以及executors
 
-![concurrent&#x5305;&#x5B9E;&#x73B0;&#x6574;&#x4F53;&#x793A;&#x610F;&#x56FE;](../../.gitbook/assets/image%20%2865%29.png)
+![concurrent&#x76EE;&#x5F55;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%28266%29.png)
+
+![concurrent&#x5305;&#x5B9E;&#x73B0;&#x6574;&#x4F53;&#x793A;&#x610F;&#x56FE;](../../.gitbook/assets/image%20%2868%29.png)
 
 ## 2. lock简介
 
@@ -19,9 +21,7 @@ void unlock();
 Condition newCondition();//获取与lock绑定的等待通知组件，当前线程必须获得了锁才能进行等待，进行等待时会先释放锁，当再次获取锁时才能从等待中返回
 ```
 
-在Lock中声明了四个方法来获取锁，那么这四个方法有何区别呢？
-
-### 1\). lock\(\)
+### （1\) lock\(\)
 
 　　首先，lock\(\)方法是平常使用得最多的一个方法，就是用来获取锁。如果锁已被其他线程获取，则进行等待。在前面已经讲到，**如果采用Lock，必须主动去释放锁，并且在发生异常时，不会自动释放锁。**因此，一般来说，**使用Lock必须在try…catch…块中进行，并且将释放锁的操作放在finally块中进行，以保证锁一定被被释放，防止死锁的发生。**
 
@@ -39,7 +39,7 @@ try{
 }
 ```
 
-### 2\). tryLock\(\) & tryLock\(long time, TimeUnit unit\)
+### （2\) tryLock\(\) & tryLock\(long time, TimeUnit unit\)
 
 　　tryLock\(\)方法是有返回值的，它表示用来尝试获取锁，如果获取成功，则返回true；如果获取失败（即锁已被其他线程获取），则返回false，也就是说，**这个方法无论如何都会立即返回（在拿不到锁时不会一直在那等待）。**
 
@@ -62,7 +62,7 @@ if(lock.tryLock()) {
 }
 ```
 
-### 3\). lockInterruptibly\(\)
+### （3\) lockInterruptibly\(\)
 
 　　lockInterruptibly\(\)方法比较特殊，**当通过这个方法去获取锁时，如果线程正在等待获取锁，则这个线程能够响应中断，即中断线程的等待状态。**例如，当两个线程同时通过lock.lockInterruptibly\(\)想获取某个锁时，假若此时线程A获取到了锁，而线程B只有在等待，那么对线程B调用threadB.interrupt\(\)方法能够中断线程B的等待过程。
 

@@ -4,7 +4,7 @@
 
 threadLocal是为了解决**对象不能被多线程共享访问**的问题，通过threadLocal.set方法将对象实例保存在每个线程自己所拥有的threadLocalMap中，这样每个线程使用自己的对象实例，彼此不会影响达到隔离的作用，从而就解决了对象在被共享访问带来线程安全问题。如果将同步机制和threadLocal做一个横向比较的话，同步机制就是通过控制线程访问共享对象的顺序，而threadLocal就是为每一个线程分配一个该对象，各用各的互不影响。打个比方说，现在有100个同学需要填写一张表格但是只有一支笔，同步就相当于A使用完这支笔后给B，B使用后给C用......老师就控制着这支笔的使用顺序，使得同学之间不会产生冲突。而threadLocal就相当于，老师直接准备了100支笔，这样每个同学都使用自己的，同学之间就不会产生冲突。很显然这就是两种不同的思路，同步机制以“**时间换空间**”，由于每个线程在同一时刻共享对象只能被一个线程访问造成整体上响应时间增加，但是对象只占有一份内存，牺牲了时间效率换来了空间效率即“**时间换空间**”。而threadLocal，为每个线程都分配了一份对象，自然而然内存使用率增加，每个线程各用各的，整体上时间效率要增加很多，牺牲了空间效率换来时间效率即“**空间换时间**”。
 
-![threadLocal&#x5F15;&#x7528;&#x793A;&#x610F;&#x56FE;](../../../.gitbook/assets/image%20%28354%29.png)
+![threadLocal&#x5F15;&#x7528;&#x793A;&#x610F;&#x56FE;](../../../.gitbook/assets/image%20%28373%29.png)
 
 上图中，实线代表强引用，虚线代表的是弱引用，如果threadLocal外部强引用被置为null\(threadLocalInstance=null\)的话，threadLocal实例就没有一条引用链路可达，很显然在gc\(垃圾回收\)的时候势必会被回收，因此entry就存在key为null的情况，无法通过一个Key为null去访问到该entry的value。同时，就存在了这样一条引用链：**threadRef-&gt;currentThread-&gt;threadLocalMap-&gt;entry-&gt;valueRef-&gt;valueMemory**,导致在垃圾回收的时候进行可达性分析的时候,value可达从而不会被回收掉，但是该value永远不能被访问到，这样就存在了**内存泄漏**。当然，如果线程执行结束后，threadLocal，threadRef会断掉，因此threadLocal,threadLocalMap，entry都会被回收掉。可是，在实际使用中我们都是会用线程池去维护我们的线程，比如在Executors.newFixedThreadPool\(\)时创建线程的时候，为了复用线程是不会结束的，所以threadLocal内存泄漏就值得我们关注。
 
@@ -78,7 +78,7 @@ private boolean cleanSomeSlots(int i, int n) {
 
    主要用于**扫描控制（scan control），从while中是通过n来进行条件判断的说明n就是用来控制扫描趟数（循环次数）的**。在扫描过程中，如果没有遇到脏entry就整个扫描过程持续log2\(n\)次，log2\(n\)的得来是因为`n >>>= 1`，每次n右移一位相当于n除以2。如果在扫描过程中遇到脏entry的话就会令n为当前hash表的长度（`n=len`），再扫描log2\(n\)趟，注意此时n增加无非就是多增加了循环次数从而通过nextIndex往后搜索的范围扩大，示意图如下
 
-![cleanSomeSlots&#x793A;&#x610F;&#x56FE;](../../../.gitbook/assets/image%20%2838%29.png)
+![cleanSomeSlots&#x793A;&#x610F;&#x56FE;](../../../.gitbook/assets/image%20%2839%29.png)
 
 按照n的初始值，搜索范围为黑线，当遇到了脏entry，此时n变成了哈希数组的长度（n取值增大），搜索范围log2\(n\)增大，红线表示。如果在整个搜索过程没遇到脏entry的话，搜索结束，采用这种方式的主要是用于时间效率上的平衡。
 
@@ -142,7 +142,7 @@ private int expungeStaleEntry(int staleSlot) {
 
 现在对cleanSomeSlot方法做一下总结，其方法执行示意图如下：
 
-![cleanSomeSlots&#x793A;&#x610F;&#x56FE;](../../../.gitbook/assets/image%20%28206%29.png)
+![cleanSomeSlots&#x793A;&#x610F;&#x56FE;](../../../.gitbook/assets/image%20%28211%29.png)
 
 如图所示，cleanSomeSlot方法主要有这样几点：
 
@@ -151,7 +151,7 @@ private int expungeStaleEntry(int staleSlot) {
 
 下面，以一个例子更清晰的来说一下，假设当前table数组的情况如下图。
 
-![cleanSomeSlots&#x6267;&#x884C;&#x60C5;&#x666F;&#x56FE;](../../../.gitbook/assets/image%20%28193%29.png)
+![cleanSomeSlots&#x6267;&#x884C;&#x60C5;&#x666F;&#x56FE;](../../../.gitbook/assets/image%20%28198%29.png)
 
 1. 如图当前n等于hash表的size即n=10，i=1,在第一趟搜索过程中通过nextIndex,i指向了索引为2的位置，此时table\[2\]为null，说明第一趟未发现脏entry,则第一趟结束进行第二趟的搜索。
 2. 第二趟所搜先通过nextIndex方法，索引由2的位置变成了i=3,当前table\[3\]!=null但是该entry的key为null，说明找到了一个脏entry，**先将n置为哈希表的长度len,然后继续调用expungeStaleEntry方法**，该方法会将当前索引为3的脏entry给清除掉（令value为null，并且table\[3\]也为null）,但是**该方法可不想偷懒，它会继续往后环形搜索**，往后会发现索引为4,5的位置的entry同样为脏entry，索引为6的位置的entry不是脏entry保持不变，直至i=7的时候此处table\[7\]位null，该方法就以i=7返回。至此，第二趟搜索结束；
@@ -251,24 +251,30 @@ int slotToExpunge = staleSlot;
 
 这部分代码通过PreIndex方法实现往前环形搜索脏entry的功能，初始时slotToExpunge和staleSlot相同，若在搜索过程中发现了脏entry，则更新slotToExpunge为当前索引i。另外，说明replaceStaleEntry并不仅仅局限于处理当前已知的脏entry，它认为在出**现脏entry的相邻位置也有很大概率出现脏entry，所以为了一次处理到位，就需要向前环形搜索，找到前面的脏entry**。那么根据在向前搜索中是否还有脏entry以及在for循环后向环形查找中是否找到可覆盖的entry，我们分这四种情况来充分理解这个方法：
 
-* 1.前向有脏entry
-  * 1.1后向环形查找找到可覆盖的entry
+1.前向有脏entry
 
-    该情形如下图所示。  
+* 1.1 后向环形查找找到可覆盖的entry
 
-  * * 向前环形搜索到脏entry，向后环形查找到可覆盖的entry的情况.png
+![&#x524D;&#x5411;&#x6709;&#x810F;entry](../../../.gitbook/assets/2615789-ebc60645134a0342.png)
 
-    如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索遇到脏entry时，在第1行代码中slotToExpunge会更新为当前脏entry的索引i，直到遇到哈希桶（table\[i\]）为null的时候，前向搜索过程结束。在接下来的for循环中进行后向环形查找，若查找到了可覆盖的entry，第2,3,4行代码先覆盖当前位置的entry，然后再与staleSlot位置上的脏entry进行交换。交换之后脏entry就更换到了i处，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程
+* 向前环形搜索到脏entry，向后环形查找到可覆盖的entry的情况.png
 
-  * 1.2后向环形查找未找到可覆盖的entry  该情形如下图所示。 ![](//upload-images.jianshu.io/upload_images/2615789-423c8c8dfb2e9557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/746/format/webp)
-  * 前向环形搜索到脏entry,向后环形未搜索可覆盖entry.png  
+  如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索遇到脏entry时，在第1行代码中slotToExpunge会更新为当前脏entry的索引i，直到遇到哈希桶（table\[i\]）为null的时候，前向搜索过程结束。在接下来的for循环中进行后向环形查找，若查找到了可覆盖的entry，第2,3,4行代码先覆盖当前位置的entry，然后再与staleSlot位置上的脏entry进行交换。交换之后脏entry就更换到了i处，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程
+
+* 1.2后向环形查找未找到可覆盖的entry  
+   该情形如下图所示。  
 
 
-    如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索遇到脏entry时，在第1行代码中slotToExpunge会更新为当前脏entry的索引i，直到遇到哈希桶（table\[i\]）为null的时候，前向搜索过程结束。在接下来的for循环中进行后向环形查找，若没有查找到了可覆盖的entry，哈希桶（table\[i\]）为null的时候，后向环形查找过程结束。那么接下来在8,9行代码中，将插入的新entry直接放在staleSlot处即可，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程
+  ![](//upload-images.jianshu.io/upload_images/2615789-423c8c8dfb2e9557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/746/format/webp)
+
+* 前向环形搜索到脏entry,向后环形未搜索可覆盖entry.png  
+
+
+  如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索遇到脏entry时，在第1行代码中slotToExpunge会更新为当前脏entry的索引i，直到遇到哈希桶（table\[i\]）为null的时候，前向搜索过程结束。在接下来的for循环中进行后向环形查找，若没有查找到了可覆盖的entry，哈希桶（table\[i\]）为null的时候，后向环形查找过程结束。那么接下来在8,9行代码中，将插入的新entry直接放在staleSlot处即可，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程
+
 * 2.前向没有脏entry
-  * 2.1后向环形查找找到可覆盖的entry  
-     该情形如下图所示。  
-    ![](//upload-images.jianshu.io/upload_images/2615789-018d077773a019dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/871/format/webp)前向未搜索到脏entry，后向环形搜索到可覆盖的entry.png  
+  * 2.1后向环形查找找到可覆盖的entry  该情形如下图所示。 ![](//upload-images.jianshu.io/upload_images/2615789-018d077773a019dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/871/format/webp)
+  * 前向未搜索到脏entry，后向环形搜索到可覆盖的entry.png  
 
 
     如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索直到遇到哈希桶（table\[i\]）为null的时候，前向搜索过程结束，若在整个过程未遇到脏entry，slotToExpunge初始状态依旧和staleSlot相同。在接下来的for循环中进行后向环形查找，若遇到了脏entry，在第7行代码中更新slotToExpunge为位置i。若查找到了可覆盖的entry，第2,3,4行代码先覆盖当前位置的entry，然后再与staleSlot位置上的脏entry进行交换，交换之后脏entry就更换到了i处。如果在整个查找过程中都还没有遇到脏entry的话，会通过第5行代码，将slotToExpunge更新当前i处，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程。
