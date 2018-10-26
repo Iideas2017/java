@@ -119,7 +119,7 @@ WindowsSelectorImpl(SelectorProvider sp) throws IOException {
 
 **pollWrapper**用Unsafe类申请一块物理内存pollfd，存放socket句柄fdVal和events，其中pollfd共8位，0-3位保存socket句柄，4-7位保存events。
 
-![](../../../.gitbook/assets/image%20%28131%29.png)
+![](../../../.gitbook/assets/image%20%28132%29.png)
 
 ![](../../../.gitbook/assets/image%20%2871%29.png)
 
