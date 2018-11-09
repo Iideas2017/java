@@ -20,7 +20,7 @@ CREATE TABLE `b_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
-![&#x8868;&#x5185;&#x5185;&#x5BB9;](../../.gitbook/assets/image%20%28379%29.png)
+![&#x8868;&#x5185;&#x5185;&#x5BB9;](../../.gitbook/assets/image%20%28393%29.png)
 
 ### 2. 内连接
 
@@ -28,9 +28,9 @@ CREATE TABLE `b_table` (
 
 语句：`select * from a_table a inner join b_table b on a.a_id = b.b_id;`
 
-![&#x7ED3;&#x679C;](../../.gitbook/assets/image%20%28180%29.png)
+![&#x7ED3;&#x679C;](../../.gitbook/assets/image%20%28184%29.png)
 
-![&#x4E24;&#x4E2A;&#x8868;&#x7684;&#x4EA4;&#x96C6;](../../.gitbook/assets/image%20%28382%29.png)
+![&#x4E24;&#x4E2A;&#x8868;&#x7684;&#x4EA4;&#x96C6;](../../.gitbook/assets/image%20%28396%29.png)
 
 ### 3. 左连接（左外连接）
 
@@ -38,7 +38,7 @@ CREATE TABLE `b_table` (
 
 语句：`select * from a_table a left join b_table b on a.a_id = b.b_id;`
 
-![&#x67E5;&#x8BE2;&#x7ED3;&#x679C;](../../.gitbook/assets/image%20%28235%29.png)
+![&#x67E5;&#x8BE2;&#x7ED3;&#x679C;](../../.gitbook/assets/image%20%28241%29.png)
 
 ![&#x5DE6;&#x5916;&#x8FDE;&#x63A5;](../../.gitbook/assets/image%20%287%29.png)
 
@@ -48,9 +48,9 @@ CREATE TABLE `b_table` (
 
 语句：`select * from a_table a right outer join b_table b on a.a_id = b.b_id;`
 
-![&#x67E5;&#x8BE2;&#x7ED3;&#x679C;](../../.gitbook/assets/image%20%28177%29.png)
+![&#x67E5;&#x8BE2;&#x7ED3;&#x679C;](../../.gitbook/assets/image%20%28181%29.png)
 
-![&#x53F3;&#x8FDE;&#x63A5;](../../.gitbook/assets/image%20%28149%29.png)
+![&#x53F3;&#x8FDE;&#x63A5;](../../.gitbook/assets/image%20%28151%29.png)
 
 ### 5. 全连接（全外连接）
 
