@@ -1,20 +1,20 @@
-# Unsafe类
+# 2.2.2 Unsafe 类\(下）
 
-#### **综述**
+## 一、**综述**
 
-sun.misc.Unsafe至少从2004年Java1.4开始就存在于Java中了。在Java9中，为了提高JVM的可维护性，Unsafe和许多其他的东西一起都被作为内部使用类隐藏起来了。但是究竟是什么取代Unsafe不得而知，个人推测会有不止一样来取代它，那么问题来了，到底为什么要使用Unsafe？
+在Java9中，为了提高JVM的可维护性，Unsafe和许多其他的东西一起都被作为内部使用类隐藏起来了。
 
-#### **做一些Java语言不允许但是又十分有用的事情**
+### **1、做一些Java语言不允许但是又十分有用的事情**
 
 很多低级语言中可用的技巧在Java中都是不被允许的。对大多数开发者而言这是件好事，既可以拯救你，也可以拯救你的同事们。同样也使得导入开源代码更容易了，因为你能掌握它们可以造成的最大的灾难上限。或者至少明确你可以不小心失误的界限。如果你尝试地足够努力，你也能造成损害。
 
 那你可能会奇怪，为什么还要去尝试呢？当建立库时，Unsafe中很多（但不是所有）方法都很有用，且有些情况下，除了使用JNI，没有其他方法做同样的事情，即使它可能会更加危险同时也会失去Java的“一次编译，永久运行”的跨平台特性。
 
-#### **对象的反序列化**
+### **2、对象的反序列化**
 
-当使用框架反序列化或者构建对象时，会假设从已存在的对象中重建，你期望使用反射来调用类的设置函数，或者更准确一点是能直接设置内部字段甚至是final字段的函数。问题是你想创建一个对象的实例，但你实际上又不需要构造函数，因为它可能会使问题更加困难而且会有副作用。[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
+当使用框架反序列化或者构建对象时，会假设从已存在的对象中重建，你期望使用反射来调用类的设置函数，或者更准确一点是能直接设置内部字段甚至是final字段的函数。问题是你想创建一个对象的实例，但你实际上又不需要构造函数，因为它可能会使问题更加困难而且会有副作用。
 
-```text
+```java
 package com.jvm.study.unsafe;
 
 import java.io.Serializable;
@@ -33,11 +33,9 @@ public class A implements Serializable {
 }
 ```
 
-[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
+在这个类中，应该能够重建和设置final字段，但如果你不得不调用构造函数时，它就可能做一些和反序列化无关的事情。有了这些原因，很多库使用Unsafe创建实例而不是调用构造函数。
 
-在这个类中，应该能够重建和设置final字段，但如果你不得不调用构造函数时，它就可能做一些和反序列化无关的事情。有了这些原因，很多库使用Unsafe创建实例而不是调用构造函数。[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
-
-```text
+```java
     public static Unsafe getUnsafe() {
         try {
             Field f = Unsafe.class.getDeclaredField("theUnsafe");
@@ -56,15 +54,13 @@ public class A implements Serializable {
     }
 ```
 
-[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
-
 调用allocateInstance函数避免了在我们不需要构造函数的时候却调用它。
 
-#### **线程安全的直接获取内存**
+### **3、线程安全的直接获取内存**
 
-**Unsafe的另外一个用途是线程安全的获取非堆内存**。ByteBuffer函数也能使你安全的获取非堆内存或是DirectMemory，但它不会提供任何线程安全的操作。你在进程间共享数据时使用Unsafe尤其有用。[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
+**Unsafe的另外一个用途是线程安全的获取非堆内存**。ByteBuffer函数也能使你安全的获取非堆内存或是DirectMemory，但它不会提供任何线程安全的操作。你在进程间共享数据时使用Unsafe尤其有用。
 
-```text
+```java
 package com.jvm.study.unsafe;
 
 import sun.misc.Unsafe;
@@ -138,23 +134,21 @@ public class PingPongMapMain {
 }
 ```
 
-[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
-
 当你分别在两个程序，一个输入odd一个输入even，中运行时，可以看到两个进程都是通过持久化共享内存交换数据的。
 
 在每个程序中，将相同的磁盘缓存映射到进程中。内存中实际上只有一份文件的副本存在。这意味着内存可以共享，前提是你使用线程安全的操作，比如volatile变量和CAS操作。（译注：CAS Compare and Swap 无锁算法）
 
 在两个进程之间有83ns的往返时间。当考虑到System V IPC（进程间通信）大约需要2500ns，而且用IPC volatile替代persisted内存，算是相当快的了。
 
-#### **Unsafe适合在工作中使用吗？**
+### **4、Unsafe适合在工作中使用吗？**
 
 个人不建议直接使用Unsafe。它远比原生的Java开发所需要的测试多。基于这个原因建议还是使用经过测试的库。如果你只是想自己用Unsafe，建议你最好在一个独立的类库中进行全面的测试。这限制了Unsafe在你的应用程序中的使用方式，但会给你一个更安全的Unsafe。
 
-#### **总结**
+### **5、总结**
 
 Unsafe在Java中是很有趣的一个存在，你可以一个人在家里随便玩玩。它也有一些工作的应用程序特别是在写底层库的时候，但总的来说，使用经过测试的Unsafe库比直接用要好。
 
-## 使用Unsafe操作内存中的Java类和对象
+## 二、使用Unsafe操作内存中的Java类和对象
 
 **让我们开始展示内存中Java类和对象结构**
 
@@ -168,7 +162,7 @@ Unsafe在Java中是很有趣的一个存在，你可以一个人在家里随便�
 
 其它可能勾起你兴趣的知识点有，“堆外缓存”和“高性能序列化”的实现。这是一对构建在对象缓存结构上很好的实例，揭示了获取类和实例内存地址的方法，缓存中类和实例的布局以及关于对象成员变量布局的详细解释。我们希望尽可能简单地阐释这些内容，但是尽管如此这篇文章并不适合Java初学者，它要求具备对Java编程原理有一定的了解。
 
-**注意：下面关于类和对象的布局所写的内容特指Java SE 7**，所以不推荐使用者想当然地认为这些适用于过去或将来的Java版本。方便起见，我们在GitHub项目上发布了这篇文章的示例代码，可以在这里找到[ https://github.com/serkan-ozal/ocean-of-memories/tree/master/src/main/java/com/zeroturnaround/rebellabs/oceanofmemories/article1](https://github.com/serkan-ozal/ocean-of-memories/tree/master/src/main/java/com/zeroturnaround/rebellabs/oceanofmemories/article1)。
+**注意：下面关于类和对象的布局所写的内容特指Java SE 7**，所以不推荐使用者想当然地认为这些适用于过去或将来的Java版本。
 
 **在Java中最直接的内存操作方法是什么？**
 
@@ -176,9 +170,9 @@ Java最初被设计为一种安全的受控环境。尽管如此，Java HotSpot�
 
 **为何变得不安全**
 
-sun.misc.Unsafe这个类是如此地不安全，以至于JDK开发者增加了很多特殊限制来访问它。它的构造器是私有的，工厂方法getUnsafe\(\)的调用器只能被Bootloader加载。如你在下面代码片段的第8行所见，这个家伙甚至没有被任何类加载器加载，所以它的类加载器是null。它会抛出SecurityException 异常来阻止侵入者。[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
+sun.misc.Unsafe这个类是如此地不安全，以至于JDK开发者增加了很多特殊限制来访问它。它的构造器是私有的，工厂方法getUnsafe\(\)的调用器只能被Bootloader加载。如你在下面代码片段的第8行所见，这个家伙甚至没有被任何类加载器加载，所以它的类加载器是null。它会抛出SecurityException 异常来阻止侵入者。
 
-```text
+```java
 public final class Unsafe {
    ...
    private Unsafe() {}
@@ -194,12 +188,9 @@ public final class Unsafe {
 }
 ```
 
-[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
+幸运的是这里有一个Unsafe的变量可以被用来取得Unsafe的实例。
 
-幸运的是这里有一个Unsafe的变量可以被用来取得Unsafe的实例。我们可以轻松地编写一个复制方法通过反射来实现，如下所示：  
-（[http://highlyscalable.wordpress.com/2012/02/02/direct-memory-access-in-java/](http://highlyscalable.wordpress.com/2012/02/02/direct-memory-access-in-java/)）[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
-
-```text
+```java
 public static Unsafe getUnsafe() {
    try {
            Field f = Unsafe.class.getDeclaredField("theUnsafe");
@@ -211,15 +202,15 @@ public static Unsafe getUnsafe() {
 }
 ```
 
-[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
+
 
 **Unsafe一些有用的特性**
 
-1. 1. 虚拟机“集约化”（VM intrinsification）：如用于无锁Hash表中的CAS（比较和交换）。再比如compareAndSwapInt这个方法用JNI调用，包含了对CAS有特殊引导的本地代码。在这里你能读到更多关于CAS的信息：[http://en.wikipedia.org/wiki/Compare-and-swap](http://en.wikipedia.org/wiki/Compare-and-swap)。
-   2. 主机虚拟机（_译注：主机虚拟机主要用来管理其他虚拟机。而虚拟平台我们看到只有guest VM_）的sun.misc.Unsafe功能能够被用于未初始化的对象分配内存（用allocateInstance方法），然后将构造器调用解释为其他方法的调用。
-   3. 你可以从本地内存地址中追踪到这些数据。使用java.lang.Unsafe类获取内存地址是可能的。而且可以通过unsafe方法直接操作这些变量！
-   4. 使用allocateMemory方法，内存可以被分配到堆外。例如当allocateDirect方法被调用时DirectByteBuffer构造器内部会使用allocateMemory。
-   5. arrayBaseOffset和arrayIndexScale方法可以被用于开发arraylets，一种用来将大数组分解为小对象、限制扫描的实时消耗或者在大对象上做更新和移动。
+1. 虚拟机“集约化”（VM intrinsification）：如用于无锁Hash表中的CAS（比较和交换）。再比如compareAndSwapInt这个方法用JNI调用，包含了对CAS有特殊引导的本地代码。在这里你能读到更多关于CAS的信息：[http://en.wikipedia.org/wiki/Compare-and-swap](http://en.wikipedia.org/wiki/Compare-and-swap)。
+2. 主机虚拟机（_译注：主机虚拟机主要用来管理其他虚拟机。而虚拟平台我们看到只有guest VM_）的sun.misc.Unsafe功能能够被用于未初始化的对象分配内存（用allocateInstance方法），然后将构造器调用解释为其他方法的调用。
+3. 你可以从本地内存地址中追踪到这些数据。使用java.lang.Unsafe类获取内存地址是可能的。而且可以通过unsafe方法直接操作这些变量！
+4. 使用allocateMemory方法，内存可以被分配到堆外。例如当allocateDirect方法被调用时DirectByteBuffer构造器内部会使用allocateMemory。
+5. arrayBaseOffset和arrayIndexScale方法可以被用于开发arraylets，一种用来将大数组分解为小对象、限制扫描的实时消耗或者在大对象上做更新和移动。
 
 **普通对象指针和压缩普通对象指针**
 
@@ -238,9 +229,9 @@ JVM处理器默认使用压缩普通对象指针；指定”-Xmx”时小于320�
 
 **关于示例类的一些事**
 
-在这篇文章中，我们将使用一个示例类（SampleClass）展示对象地址恢复、列出字段布局等。这是一个简单类，包含了三个基本数据类型并且继承了SampleBaseClass，用来展示继承的内存布局。示例类的定义如下，示例代码可以在GitHub上找到：[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;)
+在这篇文章中，我们将使用一个示例类（SampleClass）展示对象地址恢复、列出字段布局等。这是一个简单类，包含了三个基本数据类型并且继承了SampleBaseClass，用来展示继承的内存布局。示例类的定义如下，示例代码可以在GitHub上找到：
 
-```text
+```java
 package com.jvm.study.unsafe;
 
 public class SampleBaseClass {
@@ -286,13 +277,11 @@ public final class SampleClass extends SampleBaseClass {
 }
 ```
 
-[![&#x590D;&#x5236;&#x4EE3;&#x7801;](http://common.cnblogs.com/images/copycode.gif)](javascript:void%280%29;) 
-
 要得到Java类的内存地址没有简便方法。为了得到地址，必须使用一些技巧并且做一些牺牲！本文会介绍两种获得Java类内存地址的办法。
 
 **方法一**
 
-在JVM中，每个对象都一个指向类的指针。但是只指向具体类，不支持接口或抽象类。如果我们得到一个对象的内存地址，就可以很容易地找到类的地址。这种方法对于那些可以创建实例的类来说非常有用。但是接口或抽象类不能使用这种方法。[http://hg.openjdk.java.net/jdk7/hotspot/hotspot/file/9b0ca45cd756/src/share/vm/oops/oop.hpp](http://hg.openjdk.java.net/jdk7/hotspot/hotspot/file/9b0ca45cd756/src/share/vm/oops/oop.hpp)
+在JVM中，每个对象都一个指向类的指针。但是只指向具体类，不支持接口或抽象类。如果我们得到一个对象的内存地址，就可以很容易地找到类的地址。这种方法对于那些可以创建实例的类来说非常有用。但是接口或抽象类不能使用这种方法。
 
 ```text
 For 32 bit JVM:
@@ -330,7 +319,7 @@ For 64 bit JVM with compressed-oops:
 
 没有预先定义好的偏移，但是在类文件解析器中作为“隐藏”字段给出了注释（这里实际上有3个字段：`class`, `arrayClass`, `resolvedConstructor`）。因为在java.lang.Class中有18个非静态引用字段，他们只是恰好表示了这段偏移。
 
-更多信息可以参见`ClassFileParser::java_lang_Class_fix_pre()` `和JavaClasses::check_offsets()`。文档地址：[http://hg.openjdk.java.net/jdk7/hotspot/hotspot/file/9b0ca45cd756/src/share/vm/classfile/](http://hg.openjdk.java.net/jdk7/hotspot/hotspot/file/9b0ca45cd756/src/share/vm/classfile/).
+更多信息可以参见`ClassFileParser::java_lang_Class_fix_pre()` `和JavaClasses::check_offsets()`。
 
 获取内存地址的示例代码如下：
 
@@ -361,35 +350,70 @@ For 64 bit JVM with compressed-oops:
 * 如果是32位JVM，可以通过 sun.misc.Unsafe 类得到数组对象的内存地址（address\_of\_array）与数组基本偏移量（base\_offset\_of\_array）相加的整型结果。这个4字节整型数值就是目标对象的内存地址。
 * 如果是64位JVM，可以通过 sun.misc.Unsafe 类得到数组对象的内存地址（address\_of\_array）与数组基本偏移量（base\_offset\_of\_array）相加的长整型值结果。这个8字节长整型数值就是目标对象的内存地址。
 
-32位JVM
+32位JVM：
 
-| 1234 | `Object helperArray[]    =` `new` `Object[1];helperArray[0]      = targetObject;long` `baseOffset     = unsafe.arrayBaseOffset(Object[].class);int` `addressOfObject = unsafe.getInt(helperArray, baseOffset);` |
-| :--- | :--- |
+```java
+Object helperArray[]    = new Object[1];
+helperArray[0]      = targetObject;
+long baseOffset     = unsafe.arrayBaseOffset(Object[].class);
+int addressOfObject = unsafe.getInt(helperArray, baseOffset);
+```
 
+64位JVM：
 
-64位JVM
-
-| 1234 | `Object helperArray[]    =` `new` `Object[1];helperArray[0]      = targetObject;long` `baseOffset     = unsafe.arrayBaseOffset(Object[].class);long` `addressOfObject    = unsafe.getLong(helperArray, baseOffset);` |
-| :--- | :--- |
-
+```java
+Object helperArray[]    = new Object[1];
+helperArray[0]      = targetObject;
+long baseOffset     = unsafe.arrayBaseOffset(Object[].class);
+long addressOfObject    = unsafe.getLong(helperArray, baseOffset);
+```
 
 可以认为这段代码中的 targetObject 是上文中 SampleClass 的某个实例。但请记住，这段代码适用于任何类的任何实例。
 
 **类的内存布局**
 
-32位JVM
+32位JVM：
 
-| 123456789101112131415 | `[header                ] 4  byte[klass pointer         ] 4  byte (pointer)[C++ vtbl ptr          ] 4  byte (pointer)[layout_helper         ] 4  byte[super check offset    ] 4  byte[name                  ] 4  byte (pointer)[secondary super cache ] 4  byte (pointer)[secondary supers      ] 4  byte (pointer)[primary supers        ] 32 byte (8 length array of pointer)[java mirror           ] 4  byte (pointer)[super                 ] 4  byte (pointer)[first subklass        ] 4  byte (pointer)[next sibling          ] 4  byte (pointer)[modifier flags        ] 4  byte 4  byte` |
-| :--- | :--- |
+```text
+[header                ] 4  byte
+[klass pointer         ] 4  byte (pointer)
+[C++ vtbl ptr          ] 4  byte (pointer)
+[layout_helper         ] 4  byte
+[super check offset    ] 4  byte 
+[name                  ] 4  byte (pointer)
+[secondary super cache ] 4  byte (pointer)
+[secondary supers      ] 4  byte (pointer)
+[primary supers        ] 32 byte (8 length array of pointer)
+[java mirror           ] 4  byte (pointer)
+[super                 ] 4  byte (pointer)
+[first subklass        ] 4  byte (pointer)
+[next sibling          ] 4  byte (pointer)
+[modifier flags        ] 4  byte
+ 4  byte
+```
+
+64位JVM：
+
+```text
+[header                ] 8  byte
+[klass pointer         ] 8  byte (4 byte for compressed-oops)
+[C++ vtbl ptr          ] 8  byte (4 byte for compressed-oops)
+[layout_helper         ] 4  byte
+[super check offset    ] 4  byte 
+[name                  ] 8  byte (4 byte for compressed-oops)
+[secondary super cache ] 8  byte (4 byte for compressed-oops)
+[secondary supers      ] 8  byte (4 byte for compressed-oops)
+[primary supers        ] 64 byte (32 byte for compressed-oops)
+                                     {8 length array of pointer}
+[java mirror           ] 8  byte (4 byte for compressed-oops)
+[super                ] 8  byte (4 byte for compressed-oops)
+[first subklass         ] 8  byte (4 byte for compressed-oops)
+[next sibling          ] 8  byte (4 byte for compressed-oops)
+[modifier flags        ] 4  byte
+ 4  byte
+```
 
 
-64位JVM
-
-| 12345678910111213141516 | `[header                ] 8  byte[klass pointer         ] 8  byte (4 byte for compressed-oops)[C++ vtbl ptr          ] 8  byte (4 byte for compressed-oops)[layout_helper         ] 4  byte[super check offset    ] 4  byte[name                  ] 8  byte (4 byte for compressed-oops)[secondary super cache ] 8  byte (4 byte for compressed-oops)[secondary supers      ] 8  byte (4 byte for compressed-oops)[primary supers        ] 64 byte (32 byte for compressed-oops)                                     {8 length array of pointer}[java mirror           ] 8  byte (4 byte for compressed-oops)[super                ] 8  byte (4 byte for compressed-oops)[first subklass         ] 8  byte (4 byte for compressed-oops)[next sibling          ] 8  byte (4 byte for compressed-oops)[modifier flags        ] 4  byte 4  byte` |
-| :--- | :--- |
-
-
-上面内容可参见源码 klass.hpp ：[http://hg.openjdk.java.net/jdk7/hotspot/hotspot/file/9b0ca45cd756/src/share/vm/oops/klass.hpp](http://hg.openjdk.java.net/jdk7/hotspot/hotspot/file/9b0ca45cd756/src/share/vm/oops/klass.hpp)。
 
 下图展示了 SampleClass 在32位JVM中的内存布局，列出了自起始地址起的前128个字节：
 

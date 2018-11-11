@@ -23,7 +23,7 @@
 
 ReentrantLock的UML类图：
 
-![](../../.gitbook/assets/image%20%2826%29.png)
+![](../../.gitbook/assets/image%20%2827%29.png)
 
 从图中可以看出：  
 \(01\) ReentrantLock实现了Lock接口。  

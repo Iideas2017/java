@@ -1,4 +1,4 @@
-# Unsafe 类
+# 2.2.1 Unsafe 类\(上\)
 
 ## 一、Unsafe简介
 
@@ -71,7 +71,7 @@ public class Test {
 
 在if\(!VM.isSystemDomainLoader\(class1.getClassLoader\(\)\)\)处打个断点，然后watch下Reflection.getCallerClass\(\)的值，如下图：
 
-![](../../.gitbook/assets/image%20%2847%29.png)
+![](../../../.gitbook/assets/image%20%2848%29.png)
 
         ****说明：根据Java 类加载器的工作原理，应用程序的类由AppLoader加载。而系统核心类，如rt.jar中的类由Bootstrap类加载器加载。Bootstrap加载器没有Java对象的对象，因此试图获得这个类加载器会返回null。所以，当一个类的类加载器为null时，说明它是由Bootstrap加载的，而这个类也极有可能是rt.jar中的类。
 
@@ -106,7 +106,15 @@ native getLong方法获取对象中offset偏移地址对应的long型field的值
 
 2 **数组元素定位：**
 
-Unsafe类中有很多以BASE\_OFFSET结尾的常量，比如ARRAY\_INT\_BASE\_OFFSET，ARRAY\_BYTE\_BASE\_OFFSET等，这些常量值是通过arrayBaseOffset方法得到的。arrayBaseOffset方法是一个本地方法，可以获取数组第一个元素的偏移地址。Unsafe类中还有很多以INDEX\_SCALE结尾的常量，比如 ARRAY\_INT\_INDEX\_SCALE ， ARRAY\_BYTE\_INDEX\_SCALE等，这些常量值是通过arrayIndexScale方法得到的。arrayIndexScale方法也是一个本地方法，可以获取数组的转换因子，也就是数组中元素的增量地址。将arrayBaseOffset与arrayIndexScale配合使用，可以定位数组中每个元素在内存中的位置。
+Unsafe类中有很多**以BASE\_OFFSET结尾的常量**，比如ARRAY\_INT\_BASE\_OFFSET，ARRAY\_BYTE\_BASE\_OFFSET等，这些常量值是**通过arrayBaseOffset方法**得到的：
+
+本地方法 **arrayBaseOffset**，可以**获取数组第一个元素的偏移地址**。
+
+Unsafe类中还有很多**以INDEX\_SCALE结尾的常量**，比如 ARRAY\_INT\_INDEX\_SCALE ， ARRAY\_BYTE\_INDEX\_SCALE等，这些常量值是**通过arrayIndexScale方法得到的**。
+
+本地方法 **arrayIndexScale**，可以**获取数组的转换因子**，也就是数组中元素的增量地址。
+
+将arrayBaseOffset与arrayIndexScale配合使用，可以定位数组中每个元素在内存中的位置。
 
 ```java
 public final class Unsafe {
@@ -129,7 +137,7 @@ public final class Unsafe {
 
 ### 3、挂起与恢复
 
-将一个线程进行挂起是通过park方法实现的，调用park后，线程将一直阻塞直到超时或者中断等条件出现。unpark可以终止一个挂起的线程，使其恢复正常。整个并发框架中对线程的挂起操作被封装在LockSupport类中，LockSupport类中有各种版本pack方法，但最终都调用了Unsafe.park\(\)方法。
+将一个线程进行挂起是通过park方法实现的，调用park后，**线程将一直阻塞直到超时或者中断等条件出现**。unpark可以终止一个挂起的线程，使其恢复正常。整个并发框架中对线程的挂起操作被封装在LockSupport类中，LockSupport类中有各种版本pack方法，但最终都调用了Unsafe.park\(\)方法。
 
 ```java
 public class LockSupport {
@@ -180,7 +188,6 @@ public class LockSupport {
 
 ```java
     public native void unpark(Object obj);
-
     public native void park(boolean flag, long l);
 ```
 
@@ -240,8 +247,7 @@ public native void  putLong(Object o, long offset, long x);
 还是看下natUnsafe.cc中的c++实现吧，很简单，就是计算要写入数据的内存地址，然后写入数据，如下：
 
 ```java
-void
-sun::misc::Unsafe::putLong (jobject obj, jlong offset, jlong value)
+void sun::misc::Unsafe::putLong (jobject obj, jlong offset, jlong value)
 {
   jlong *addr = (jlong *) ((char *) obj + offset);//计算要修改的数据的内存地址=对象地址+成员属性地址偏移量
   spinlock lock;//自旋锁，通过循环来获取锁， i386处理器需要加锁访问64位数据，如果是int，则不需要改行代码
