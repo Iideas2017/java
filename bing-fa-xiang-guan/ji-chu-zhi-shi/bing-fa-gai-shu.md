@@ -67,7 +67,7 @@
 
 **线程不安全类示例：**
 
-```text
+```java
 @NotThreadSafe 
 public class UnsafeSequence { 
     private int value;
@@ -94,7 +94,7 @@ public class UnsafeSequence {
 
 　　**在 Java 中，一个应用程序对应着一个JVM实例（JVM进程）。Java采用的是 单线程编程模型** ，即在我们自己的程序中如果没有主动创建线程的话，只会创建一个线程，通常称为主线程。但是要注意，虽然只有一个线程来执行任务，不代表JVM中只有一个线程，JVM实例在创建的时候，同时会创建很多其他的线程（比如垃圾收集器线程）。由于Java采用的是单线程编程模型，因此在进行UI编程时要注意将耗时的操作放在子线程中进行，以避免阻塞主线程（在UI编程时，主线程即UI线程，用来处理用户的交互事件）。
 
-```text
+```java
 public class Test {
     public static void main(String[] args) {
         // 获取运行当前代码的线程的名字

@@ -30,7 +30,7 @@
 * **第二次握手：**Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN\_RCVD状态。
 * **第三次握手：**Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给Server，Server检查ack是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。
 
-![](../../.gitbook/assets/image%20%2829%29.png)
+![](../../.gitbook/assets/image%20%2830%29.png)
 
 ## 3. 四次挥手
 
@@ -41,7 +41,7 @@
 * 第三次挥手：Server发送一个FIN，**用来关闭Server到Client的数据传送**，Server进入LAST\_ACK状态。
 * 第四次挥手：Client收到FIN后，Client进入TIME\_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。
 
-![](../../.gitbook/assets/image%20%28381%29.png)
+![](../../.gitbook/assets/image%20%28387%29.png)
 
 ## 4. 深度解析
 

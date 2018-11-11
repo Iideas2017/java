@@ -16,7 +16,7 @@
 
        **状态的更新使用getState, setState 以及compareAndSetState 这三个方法**。
 
-![AQS&#x53EF;&#x91CD;&#x5199;&#x7684;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%28262%29.png)
+![AQS&#x53EF;&#x91CD;&#x5199;&#x7684;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%28267%29.png)
 
 AQS提供的模板方法可以分为3类：
 
@@ -26,7 +26,7 @@ AQS提供的模板方法可以分为3类：
 
 同步组件通过AQS提供的模板方法实现自己的同步语义。
 
-![AQS&#x63D0;&#x4F9B;&#x7684;&#x6A21;&#x677F;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%28138%29.png)
+![AQS&#x63D0;&#x4F9B;&#x7684;&#x6A21;&#x677F;&#x65B9;&#x6CD5;](../../.gitbook/assets/image%20%28142%29.png)
 
 它将**一些方法开放给子类进行重写，而同步器给同步组件所提供模板方法又会重新调用被子类所重写的方法**。
 
@@ -67,7 +67,7 @@ protected final boolean tryAcquire(int acquires) {   //重写后tryAcquire
 
  获取锁失败进行入队操作，获取锁成功进行出队操作
 
-![&#x540C;&#x6B65;&#x961F;&#x5217;&#x6A21;&#x578B;](../../.gitbook/assets/image%20%28134%29.png)
+![&#x540C;&#x6B65;&#x961F;&#x5217;&#x6A21;&#x578B;](../../.gitbook/assets/image%20%28138%29.png)
 
 * 其中head指向同步队列的头部，注意**head为空结点**，不存储信息。而tail则是同步队列的队尾，同步队列采用的是**双向链表**的结构这样可方便队列**进行结点增删操作**。
 * **state**变量则是代表**同步**状态，执行当线程调用lock方法进行加锁后，如果此时state的值为0，则说明当前线程可以获取到锁\(在本篇文章中，锁和同步状态代表同一个意思\)，同时将state设置为1，表示获取成功。如果state已为1，也就是当前锁已被其他线程持有，那么当前执行线程将被封装为Node结点加入同步队列等待。
@@ -75,9 +75,9 @@ protected final boolean tryAcquire(int acquires) {   //重写后tryAcquire
 
 ### 3.1  独占式锁的获取
 
-![](../../.gitbook/assets/image%20%28220%29.png)
+![](../../.gitbook/assets/image%20%28225%29.png)
 
-![](../../.gitbook/assets/image%20%28156%29.png)
+![](../../.gitbook/assets/image%20%28160%29.png)
 
 ### 3.2 独占锁的释放
 
@@ -224,7 +224,7 @@ public class MutextDemo {
 
 执行情况：
 
-![mutex&#x7684;&#x6267;&#x884C;&#x60C5;&#x51B5;](../../.gitbook/assets/image%20%28418%29.png)
+![mutex&#x7684;&#x6267;&#x884C;&#x60C5;&#x51B5;](../../.gitbook/assets/image%20%28425%29.png)
 
 上面的这个例子实现了独占锁的语义，在同一个时刻只允许一个线程占有锁。MutexDemo新建了10个线程，分别睡眠3s。从执行情况也可以看出来当前Thread-6正在执行占有锁而其他Thread-7,Thread-8等线程处于WAIT状态。按照推荐的方式，Mutex定义了一个**继承AQS的静态内部类Sync**,并且重写了AQS的tryAcquire等等方法，而对state的更新也是利用了setState\(\),getState\(\)，compareAndSetState\(\)这三个方法。在实现实现lock接口中的方法也只是调用了AQS提供的模板方法（因为Sync继承AQS）。从这个例子就可以很清楚的看出来，在同步组件的实现上主要是利用了AQS，而AQS“屏蔽”了同步状态的修改，线程排队等底层实现，通过AQS的模板方法可以很方便的给同步组件的实现者进行调用。而针对用户来说，只需要调用同步组件提供的方法来实现并发编程即可。同时在新建一个同步组件时需要把握的两个关键点是：
 
