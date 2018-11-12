@@ -1,4 +1,4 @@
-# 2.2.1 Unsafe 类\(上\)
+# 2.2.1 简介
 
 ## 一、Unsafe简介
 
@@ -71,7 +71,7 @@ public class Test {
 
 在if\(!VM.isSystemDomainLoader\(class1.getClassLoader\(\)\)\)处打个断点，然后watch下Reflection.getCallerClass\(\)的值，如下图：
 
-![](../../../.gitbook/assets/image%20%2848%29.png)
+![](../../../.gitbook/assets/image%20%2849%29.png)
 
         ****说明：根据Java 类加载器的工作原理，应用程序的类由AppLoader加载。而系统核心类，如rt.jar中的类由Bootstrap类加载器加载。Bootstrap加载器没有Java对象的对象，因此试图获得这个类加载器会返回null。所以，当一个类的类加载器为null时，说明它是由Bootstrap加载的，而这个类也极有可能是rt.jar中的类。
 

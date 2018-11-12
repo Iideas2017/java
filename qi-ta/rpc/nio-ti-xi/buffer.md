@@ -10,7 +10,7 @@
  3、**limit**：写模式下，limit表示最多能往Buffer里写多少数据，等于capacity值；读模式下，limit表示最多可以读取多少数据。  
  4、**capacity**：缓存数组大小
 
-![](../../../.gitbook/assets/image%20%28322%29.png)
+![](../../../.gitbook/assets/image%20%28328%29.png)
 
 ### **mark\(\)**：
 
@@ -88,7 +88,7 @@ public final Buffer rewind() {
 * ShortBuffer
 * MappedByteBuffer
 
-![](../../../.gitbook/assets/image%20%28169%29.png)
+![](../../../.gitbook/assets/image%20%28171%29.png)
 
 ## 3. ByteBuffer
 
