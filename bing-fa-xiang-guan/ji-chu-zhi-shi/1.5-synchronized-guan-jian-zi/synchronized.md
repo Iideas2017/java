@@ -1,4 +1,4 @@
-# Synchronized 关键字（上）
+# 1.5.2 示例
 
 ## 一. synchronized 同步方法或者同步块
 
@@ -97,7 +97,7 @@ public class InsertData {
 }
 ```
 
-![](../../.gitbook/assets/image%20%28307%29.png)
+![](../../../.gitbook/assets/image%20%28308%29.png)
 
 
 
