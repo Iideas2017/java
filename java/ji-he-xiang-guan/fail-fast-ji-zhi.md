@@ -32,7 +32,7 @@ public static void main(String[] args) {
 
 ####  b. HashMap发生fail-fast：
 
-```text
+```java
      public static void main(String[] args) {
            Map<String, String> map = new HashMap<>();
            for (int i = 0 ; i < 10 ; i ++ ) {
@@ -120,7 +120,7 @@ public class FailFastTest {
 
 fail-fast是如何抛出ConcurrentModificationException异常的，又是在什么情况下才会抛出?我们知道，对于集合如list，map类，我们都可以通过**迭代器来遍历**，而Iterator其实只是一个接口，具体的实现还是要看具体的集合类中的内部类去实现Iterator并实现相关方法。这里我们就以ArrayList类为例。在ArrayList中，当调用list.iterator\(\)时，其源码是：
 
-```text
+```java
     public Iterator<E> iterator() {
         return new Itr();
     }
@@ -128,7 +128,7 @@ fail-fast是如何抛出ConcurrentModificationException异常的，又是在什�
 
  即它会返回一个新的Itr类，而Itr类是ArrayList的内部类，实现了Iterator接口，下面是该类的源码：
 
-```text
+```java
     /**
      * An optimized version of AbstractList.Itr
      */
@@ -200,7 +200,7 @@ fail-fast是如何抛出ConcurrentModificationException异常的，又是在什�
 
 其中，有三个属性：
 
-```text
+```java
 int cursor;       // index of next element to return
 int lastRet = -1; // index of last element returned; -1 if no such
 int expectedModCount = modCount;
@@ -214,13 +214,13 @@ expectedModCount这个就是fail-fast判断的关键变量了，它初始值就�
 
 我们一步一步来看：
 
-```text
+```java
 public boolean hasNext() {  return cursor != size; }
 ```
 
 迭代器迭代结束的标志就是hasNext\(\)返回false，而该方法就是用cursor游标和size\(集合中的元素数目\)进行对比，当cursor等于size时，表示已经遍历完成。接下来看看最关心的next\(\)方法，看看为什么在迭代过程中，如果有线程对集合结构做出改变，就会发生fail-fast：
 
-```text
+```java
        @SuppressWarnings("unchecked")
         public E next() {
             checkForComodification();
@@ -237,7 +237,7 @@ public boolean hasNext() {  return cursor != size; }
 
  从源码知道，每次调用next\(\)方法，在实际访问元素前，都会调用**checkForComodification**方法，该方法源码如下：
 
-```text
+```java
         final void checkForComodification() {
             if (modCount != expectedModCount)
                 throw new ConcurrentModificationException();
@@ -256,7 +256,7 @@ public boolean hasNext() {  return cursor != size; }
 
        在单线程的遍历过程中，如果要进行remove操作，可以**调用迭代器的remove方法**而不是集合类的remove方法。看看ArrayList中迭代器的remove方法的源码：
 
-```text
+```java
         public void remove() {
             if (lastRet < 0)
                 throw new IllegalStateException();
@@ -275,7 +275,7 @@ public boolean hasNext() {  return cursor != size; }
 
 可以看到，该remove方法并不会修改modCount的值，并且不会对后面的遍历造成影响，因为该方法remove不能指定元素，只能remove当前遍历过的那个元素，所以调用该方法并不会发生fail-fast现象。该方法有局限性。例子：
 
-```text
+```java
 public static void main(String[] args) {
            List<String> list = new ArrayList<>();
            for (int i = 0 ; i < 10 ; i++ ) {
@@ -293,7 +293,7 @@ public static void main(String[] args) {
      }
 ```
 
-### _**4.2 方法2**_
+### **4.2 方法2**
 
      使用java并发包\(java.util.concurrent\)中的类来代替ArrayList 和hashMap。
 
