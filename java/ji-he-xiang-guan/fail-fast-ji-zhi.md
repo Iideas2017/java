@@ -28,7 +28,7 @@ public static void main(String[] args) {
 
 该段代码定义了一个Arraylist集合，并使用迭代器遍历，**在遍历过程中，刻意在某一步迭代中remove一个元素，这个时候，就会发生fail-fast**。
 
-![](../../.gitbook/assets/image%20%28372%29.png)
+![](../../.gitbook/assets/image%20%28373%29.png)
 
 ####  b. HashMap发生fail-fast：
 
@@ -57,7 +57,7 @@ public static void main(String[] args) {
 
 ###  **2、多线程环境下：**
 
-```text
+```java
 public class FailFastTest {
      public static List<String> list = new ArrayList<>();
  

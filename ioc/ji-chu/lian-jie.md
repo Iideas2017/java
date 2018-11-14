@@ -20,7 +20,7 @@ CREATE TABLE `b_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
-![&#x8868;&#x5185;&#x5185;&#x5BB9;](../../.gitbook/assets/image%20%28413%29.png)
+![&#x8868;&#x5185;&#x5185;&#x5BB9;](../../.gitbook/assets/image%20%28414%29.png)
 
 ### 2. 内连接
 
@@ -30,7 +30,7 @@ CREATE TABLE `b_table` (
 
 ![&#x7ED3;&#x679C;](../../.gitbook/assets/image%20%28197%29.png)
 
-![&#x4E24;&#x4E2A;&#x8868;&#x7684;&#x4EA4;&#x96C6;](../../.gitbook/assets/image%20%28416%29.png)
+![&#x4E24;&#x4E2A;&#x8868;&#x7684;&#x4EA4;&#x96C6;](../../.gitbook/assets/image%20%28417%29.png)
 
 ### 3. 左连接（左外连接）
 
