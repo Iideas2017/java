@@ -2,7 +2,7 @@
 
 ## 1. **Tomcat类加载体系结构**
 
-![Tomcat&#x7C7B;&#x52A0;&#x8F7D;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%28366%29.png)
+![Tomcat&#x7C7B;&#x52A0;&#x8F7D;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;](../../.gitbook/assets/image%20%28376%29.png)
 
 * commonLoader：Tomcat最基本的类加载器，加载路径中的class可以被Tomcat容器本身以及各个Webapp访问（**Tomcat应用服务器和Web应用均可见的类**）；
 * catalinaLoader：Tomcat容器私有的类加载器，加载路径中的class对于Webapp不可见；（**Tomcat应用服务器可见**）

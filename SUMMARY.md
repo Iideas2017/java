@@ -167,6 +167,7 @@
     * [1.2 连接](ioc/ji-chu/lian-jie.md)
     * [1.3 B、B-、B+和 B\* tree](ioc/ji-chu/bbb+-he-btree.md)
   * [2. 索引](ioc/untitled/README.md)
+    * [索引的本质](ioc/untitled/suo-yin-de-ben-zhi.md)
     * [2.1 索引的基础知识](ioc/untitled/suo-yin-de-ji-chu-zhi-shi.md)
     * [2.2 索引的优缺点](ioc/untitled/2.2-suo-yin-de-you-que-dian.md)
     * [2.3 聚集和非聚集索引](ioc/untitled/ju-ji-he-fei-ju-ji-suo-yin.md)

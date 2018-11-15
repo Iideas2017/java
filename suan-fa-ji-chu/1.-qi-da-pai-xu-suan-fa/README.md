@@ -1,6 +1,6 @@
 # 1 排序算法
 
-![&#x603B;&#x7ED3;](../../.gitbook/assets/image%20%28362%29.png)
+![&#x603B;&#x7ED3;](../../.gitbook/assets/image%20%28371%29.png)
 
 
 

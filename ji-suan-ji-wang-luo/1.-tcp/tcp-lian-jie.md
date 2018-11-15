@@ -41,7 +41,7 @@
 * 第三次挥手：Server发送一个FIN，**用来关闭Server到Client的数据传送**，Server进入LAST\_ACK状态。
 * 第四次挥手：Client收到FIN后，Client进入TIME\_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。
 
-![](../../.gitbook/assets/image%20%28400%29.png)
+![](../../.gitbook/assets/image%20%28412%29.png)
 
 ## 4. 深度解析
 

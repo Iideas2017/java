@@ -82,7 +82,7 @@
 
 ## 5.总结
 
-![JMM&#x5C42;&#x7EA7;&#x56FE;](../../.gitbook/assets/image%20%28260%29.png)
+![JMM&#x5C42;&#x7EA7;&#x56FE;](../../.gitbook/assets/image%20%28263%29.png)
 
 ### 5.1 JMM的设计
 
@@ -91,11 +91,11 @@
 1.  **程序员对内存模型的使用**  程序员希望内存模型易于理解、易于编程。程序员希望基于一个强内存模型来编写代码。
 2.  **编译器和处理器对内存模型的实现**  编译器和处理器希望内存模型对它们的束缚越少越好，这样它们就可以做尽可能多的优化来提高性能。编译器和处理器希望实现一个弱内存模型。
 
-![&#x8BBE;&#x8BA1;JMM](../../.gitbook/assets/image%20%28365%29.png)
+![&#x8BBE;&#x8BA1;JMM](../../.gitbook/assets/image%20%28374%29.png)
 
 ### 5.2 happens-before与JMM的关系
 
-![ happens-before&#x4E0E;JMM&#x7684;&#x5173;&#x7CFB;](../../.gitbook/assets/image%20%28115%29.png)
+![ happens-before&#x4E0E;JMM&#x7684;&#x5173;&#x7CFB;](../../.gitbook/assets/image%20%28117%29.png)
 
  一个happens-before规则对应于一个或多个编译器和处理器重排序规则。
 
